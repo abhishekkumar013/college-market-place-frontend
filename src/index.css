@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --heading-font-family: "Poppins", Helvetica;
+    --heading-font-size: 64px;
+    --heading-font-style: normal;
+    --heading-font-weight: 500;
+    --heading-letter-spacing: 0px;
+    --heading-line-height: normal;
+    --product-addition-font-family: "Poppins", Helvetica;
+    --product-addition-font-size: 22px;
+    --product-addition-font-style: normal;
+    --product-addition-font-weight: 400;
+    --product-addition-letter-spacing: 0px;
+    --product-addition-line-height: normal;
+    --product-font-family: "Poppins", Helvetica;
+    --product-font-size: 30px;
+    --product-font-style: normal;
+    --product-font-weight: 600;
+    --product-letter-spacing: 0px;
+    --product-line-height: normal;
+  }
