@@ -375,7 +375,6 @@ export const getAllMySales = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      console.log('bro ', data)
 
       if (data.data && data.data.length > 0) {
         dispatch(setMySales(data.data))
@@ -384,9 +383,7 @@ export const getAllMySales = () => {
       }
     } catch (error) {
       dispatch(
-        setError(
-          error.response?.data?.message || 'Failed to get youur product',
-        ),
+        setError(error.response?.data?.message || 'Failed to get your product'),
       )
     } finally {
       dispatch(setLoading(false))

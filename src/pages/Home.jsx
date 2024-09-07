@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PopularCategoryCard from '../components/PopularCategoryCard'
 import NewlyAddedCard from '../components/NewlyAddedCard'
-
 import { useDispatch, useSelector } from 'react-redux'
 import { checkLoginStatus } from '../store/slices/authSlice'
 import { getAllLatestProducts } from '../store/slices/productSlice'
@@ -9,11 +8,31 @@ import Layout from '../components/Layout/Layout'
 import ProductCarousel from '../components/Crosual/ProductCrosual'
 
 const categories = [
-  { title: 'Laptops', image: '/images/laptop.png' },
-  { title: 'Mobiles', image: '/images/mobile.png' },
-  { title: 'Charger', image: '/images/Charger.png' },
-  { title: 'Headphones', image: '/images/headphone5.jpg' },
-  { title: 'Study Materials', image: '/images/speaker.png' },
+  {
+    id: '66dc007e1c41cc1541a3c1f8',
+    title: 'Laptops',
+    image: '/images/laptop.png',
+  },
+  {
+    id: '66dc007e1c41cc1541a3c1f9',
+    title: 'Mobiles',
+    image: '/images/mobile.png',
+  },
+  {
+    id: '66dc007e1c41cc1541a3c1f7',
+    title: 'Charger',
+    image: '/images/Charger.png',
+  },
+  {
+    id: '66dc007e1c41cc1541a3c1f6',
+    title: 'Headphones',
+    image: '/images/headphone5.jpg',
+  },
+  {
+    id: '66dc007e1c41cc1541a3c1f5',
+    title: 'Study Materials',
+    image: '/images/speaker.png',
+  },
 ]
 
 const Home = () => {
@@ -46,56 +65,24 @@ const Home = () => {
   return (
     <Layout title="home" description="" keywords="" author="">
       {/* Product Carousel */}
-      <div className="mb-8">
+      <div className="mb-1 block md:hidden">
         <ProductCarousel products={latestProducts.slice(0, 8)} />
       </div>
 
       <div className="flex flex-col min-h-screen">
         <div className="flex-grow container mx-auto px-4 py-8 overflow-y-auto scrollbar-hide">
-          {/* Popular Categories for Mobile */}
-          {/* <div className="block md:hidden mb-8">
-            {showCategories ? (
-              <div>
-                <h2 className="text-2xl text-center font-bold mb-4">
-                  Categories
-                </h2>
-                <div className="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
-                  {categories.map((category, index) => (
-                    <div
-                      key={index}
-                      className="flex-shrink-0 w-20 flex flex-col items-center"
-                    >
-                      <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mb-2">
-                        <img
-                          src={category.image}
-                          alt={category.title}
-                          className="w-8 h-8"
-                        />
-                      </div>
-                      <span className="text-sm text-center">
-                        {category.title}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div className="text-center py-4 bg-gray-100 rounded-md">
-                <p className="text-lg font-semibold">
-                  Discover our amazing products!
-                </p>
-              </div>
-            )}
-          </div> */}
-
           {/* Popular Categories for Desktop */}
           <div className="hidden md:block">
             <h2 className="text-2xl text-center font-bold mb-4">
               Popular Categories
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              {categories.map((category, index) => (
-                <PopularCategoryCard key={index} {...category} />
+              {categories.map((category) => (
+                <PopularCategoryCard
+                  key={category.id}
+                  {...category}
+                  categoryId={category.id}
+                />
               ))}
             </div>
           </div>

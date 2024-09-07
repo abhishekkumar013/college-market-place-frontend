@@ -1,12 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { SearchProducts } from '../../store/slices/productSlice'
 
 const categories = [
-  { id: 1, title: 'Laptops', image: '/images/laptop.png' },
-  { id: 2, title: 'Mobiles', image: '/images/mobile.png' },
-  { id: 3, title: 'Charger', image: '/images/Charger.png' },
-  { id: 4, title: 'Headphones', image: '/images/headphone5.jpg' },
-  { id: 5, title: 'Study Materials', image: '/images/speaker.png' },
+  {
+    id: '66dc007e1c41cc1541a3c1f8',
+    title: 'Laptops',
+    image: '/images/laptop.png',
+  },
+  {
+    id: '66dc007e1c41cc1541a3c1f9',
+    title: 'Mobiles',
+    image: '/images/mobile.png',
+  },
+  {
+    id: '66dc007e1c41cc1541a3c1f7',
+    title: 'Charger',
+    image: '/images/Charger.png',
+  },
+  {
+    id: '66dc007e1c41cc1541a3c1f6',
+    title: 'Headphones',
+    image: '/images/headphone5.jpg',
+  },
+  {
+    id: '66dc007e1c41cc1541a3c1f5',
+    title: 'Study Materials',
+    image: '/images/speaker.png',
+  },
 ]
 
 const ProductCarousel = () => {
@@ -14,6 +36,8 @@ const ProductCarousel = () => {
   const displayCount = 1
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,54 +79,50 @@ const ProductCarousel = () => {
     )
   }
 
+  const handleCategoryClick = (categoryId) => {
+    dispatch(SearchProducts({ categoryId: categoryId.toString() }))
+    navigate('/product')
+  }
+
   return (
-    <div
-      className="relative w-full max-w-lg mx-auto py-8 px-4 lg:hidden"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-      <div className="overflow-hidden">
+    <div className="relative w-full max-w-lg mx-auto py-4 px-4 lg:hidden">
+      {/* Carousel */}
+      <div
+        className="overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{
             transform: `translateX(-${currentIndex * (100 / displayCount)}%)`,
           }}
         >
-          {categories.map((product) => (
-            <div key={product.id} className={`w-full flex-shrink-0 px-2`}>
-              <div className="border rounded-lg p-4 shadow-md hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 bg-white relative flex flex-col items-center">
-                <div className="mb-4 h-48 flex items-center justify-center overflow-hidden">
+          {categories.map((category) => (
+            <div key={category.id} className={`w-full flex-shrink-0 px-2`}>
+              <div
+                className="border rounded-lg p-3 shadow-md hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 bg-white relative flex flex-col items-center cursor-pointer"
+                onClick={() => handleCategoryClick(category.id)}
+              >
+                <div className="mb-2 h-32 flex items-center justify-center overflow-hidden">
                   <img
-                    src={product.image}
-                    alt={product.title}
+                    src={category.image}
+                    alt={category.title}
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-
-                <h2 className="font-bold text-center text-lg mb-2">
-                  {product.title}
+                <h2 className="font-bold text-center text-sm">
+                  {category.title}
                 </h2>
               </div>
             </div>
           ))}
         </div>
       </div>
-      {/* Navigation Buttons */}
-      {/* <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-all"
-      >
-        <ChevronLeft className="w-6 h-6 text-gray-600" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-all"
-      >
-        <ChevronRight className="w-6 h-6 text-gray-600" />
-      </button> */}
+
       {/* Pagination Dots */}
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-2">
         {categories.map((_, index) => (
           <div
             key={index}

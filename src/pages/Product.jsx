@@ -135,39 +135,38 @@ const Product = () => {
           </div>
         ) : (
           <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {displayProducts.map((product) => (
                 <div
                   key={product?._id}
-                  className="border rounded-lg p-3 shadow-md hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 flex flex-col h-[270px] bg-white group"
+                  className="border rounded-lg p-3 shadow-md hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 flex flex-col h-auto sm:h-[270px] bg-white group"
                 >
-                  <div className="mb-2 h-28 flex items-center justify-center overflow-hidden">
+                  <div className="mb-2 h-20 sm:h-28 flex items-center justify-center overflow-hidden">
                     <img
                       src={product?.image}
                       alt={product?.name}
                       className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
-                  <h2 className="font-bold text-center text-base mb-1 truncate group-hover:text-blue-600 transition-colors duration-300">
+                  <h2 className="font-bold text-center text-sm sm:text-base mb-1 truncate group-hover:text-blue-600 transition-colors duration-300">
                     {product?.name}
                   </h2>
                   <div className="flex justify-between items-center mb-1">
-                    <span className="font-bold text-xl text-green-600 group-hover:text-green-700 transition-colors duration-300">
+                    <span className="font-bold text-lg sm:text-xl text-green-600 group-hover:text-green-700 transition-colors duration-300">
                       ₹{product?.finalPrice}
                     </span>
-
-                    <span className="text-green-600 text-sm font-semibold">
+                    <span className="text-red-600 text-xs sm:text-sm font-semibold">
                       {product?.discount}% off
                     </span>
                   </div>
-                  <p className="text-gray-500 text-sm line-through">
+                  <p className="text-gray-500 text-xs sm:text-sm line-through">
                     M.R.P: ₹{product?.mrp}
                   </p>
-                  <div className="mt-2 flex flex-row w-full space-x-2">
+                  <div className="mt-2 flex flex-col sm:flex-row w-full space-y-2 sm:space-y-0 sm:space-x-2">
                     {product.isSold ? (
                       <button
                         disabled
-                        className="flex-1 bg-red-500 text-white py-1.5 px-2 rounded-full text-center text-sm cursor-not-allowed"
+                        className="flex-1 bg-red-500 text-white py-1.5 px-2 rounded-full text-center text-xs sm:text-sm cursor-not-allowed"
                       >
                         Sold Out
                       </button>
@@ -175,13 +174,13 @@ const Product = () => {
                       <>
                         <button
                           onClick={() => dispatch(addNewToCart(product))}
-                          className="flex-1 bg-green-500 text-white py-1.5 px-2 rounded-full hover:bg-green-600 transition-all duration-300 text-sm hover:shadow-md"
+                          className="flex-1 bg-green-500 text-white py-1.5 px-2 rounded-full hover:bg-green-600 transition-all duration-300 text-xs sm:text-sm hover:shadow-md"
                         >
                           Add to Cart
                         </button>
                         <button
                           onClick={() => handleOrderNow(product)}
-                          className="flex-1 bg-green-500 text-white py-1.5 px-2 rounded-full hover:bg-green-600 transition-all duration-300 text-sm hover:shadow-md"
+                          className="flex-1 bg-green-500 text-white py-1.5 px-2 rounded-full hover:bg-green-600 transition-all duration-300 text-xs sm:text-sm hover:shadow-md"
                         >
                           Buy Now
                         </button>

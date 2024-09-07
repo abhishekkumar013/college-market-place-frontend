@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addNewToCart, PlacedOrder } from '../store/slices/productSlice'
 
 const NewlyAddedCard = ({ product }) => {
@@ -42,31 +42,31 @@ const NewlyAddedCard = ({ product }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg p-4 flex flex-col items-center border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+    <div className="bg-white rounded-lg p-3 flex flex-col items-center border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
       <img
         src={product.image}
         alt={product.name}
-        className="w-full h-32 object-contain mb-2 transition-transform duration-300 ease-in-out transform hover:scale-110"
+        className="w-full h-24 object-contain mb-1 transition-transform duration-300 ease-in-out transform hover:scale-110"
       />
-      <p className="text-center font-semibold hover:text-green-600 transition-colors duration-300">
+      <p className="text-center font-semibold text-sm hover:text-green-600 transition-colors duration-300 truncate w-full">
         {product.name}
       </p>
       <div className="flex justify-between items-center w-full mt-1">
-        <p className="text-red-600 font-bold hover:text-red-700 transition-colors duration-300">
+        <p className="text-green-600 hover:text-green-700 font-bold text-sm transition-colors duration-300">
           ₹{product.finalPrice}
         </p>
-        <p className="text-sm text-green-600 hover:text-green-700 transition-colors duration-300">
+        <p className="text-xs text-red-600 hover:text-red-700  transition-colors duration-300">
           {product.discount}% off
         </p>
       </div>
-      <p className="text-sm text-gray-500 w-full">
+      <p className="text-xs text-gray-500 w-full">
         <span className="line-through">M.R.P: ₹{product.mrp}</span>
       </p>
-      <div className="flex flex-col sm:flex-row w-full mt-2 space-y-2 sm:space-y-0 sm:space-x-2">
+      <div className="flex flex-col sm:flex-row w-full mt-1 space-y-1 sm:space-y-0 sm:space-x-1">
         {product.isSold ? (
           <button
             disabled
-            className="flex-1 bg-red-500 text-white  py-1.5 px-2 rounded-full text-center text-sm cursor-not-allowed"
+            className="flex-1 bg-red-500 text-white py-1 px-2 rounded-full text-center text-xs cursor-not-allowed"
           >
             Sold Out
           </button>
@@ -74,13 +74,13 @@ const NewlyAddedCard = ({ product }) => {
           <>
             <button
               onClick={handleAddToCart}
-              className="w-full bg-green-500 text-white py-1 px-2 rounded-2xl hover:bg-green-600 transition-colors duration-300"
+              className="w-full bg-green-500 text-white py-1 px-2 rounded-full hover:bg-green-600 transition-colors duration-300 text-xs"
             >
               Add to cart
             </button>
             <button
               onClick={() => handleOrderNow(product)}
-              className="w-full bg-green-500 text-white py-1 px-2 rounded-2xl hover:bg-green-600 transition-colors duration-300"
+              className="w-full bg-green-500 text-white py-1 px-2 rounded-full hover:bg-green-600 transition-colors duration-300 text-xs"
             >
               Buy Now
             </button>
