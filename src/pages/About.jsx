@@ -1,6 +1,7 @@
 import React from 'react'
 
 import DeveloperCard from '../components/DeveloperCard'
+import Layout from '../components/Layout/Layout'
 const About = () => {
   const developers = [
     {
@@ -24,11 +25,13 @@ const About = () => {
   ]
 
   return (
-    <div className="flex flex-wrap justify-center bg-gray-100 gap-20 p-8">
-      {developers.map((dev, index) => (
-        <DeveloperCard key={index} {...dev} />
-      ))}
-    </div>
+    <Layout title="home" description="" keywords="" author="">
+      <div className="flex flex-wrap h-[500px] 2xl:h-[700px] items-center justify-center gap-20 p-8">
+        {developers.map((dev, index) => (
+          <DeveloperCard key={index} {...dev} />
+        ))}
+      </div>
+    </Layout>
   )
 }
 

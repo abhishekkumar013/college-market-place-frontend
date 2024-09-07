@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Navigation = () => {
   const [selected, setSelected] = useState(null)
   const menuObject = [
     { id: 1, name: 'Home', url: '/' },
-    { id: 2, name: 'Buy', url: '/buy' },
+    { id: 2, name: 'Products', url: '/product' },
     { id: 3, name: 'Product listing', url: '/product-listing' },
-    { id: 4, name: 'Request', url: '/request' },
-    { id: 5, name: 'Orders', url: '/orders' },
+    { id: 4, name: 'Request', url: '/all-request' },
+    { id: 5, name: 'Category', url: '/category' },
   ]
+  useEffect(() => {
+    // Update selected state based on the current location
+    const currentPath = location.pathname
+    const currentItem = menuObject.find((item) => item.url === currentPath)
+    setSelected(currentItem?.id || null)
+  }, [location.pathname])
 
   return (
     <nav className="bg-green-500 py-2">

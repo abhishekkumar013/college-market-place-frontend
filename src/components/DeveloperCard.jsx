@@ -12,7 +12,7 @@ const DeveloperCard = ({
   insta,
 }) => {
   return (
-    <div className="flex flex-col items-center p-4 m-2 bg-white rounded-lg shadow-md">
+    <div className="flex flex-col items-center p-4 m-2 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
       <div className={`relative mb-4 ${isHighlighted ? 'bg-blue-500' : ''}`}>
         <img
           src={imageUrl}
