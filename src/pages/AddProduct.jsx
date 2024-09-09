@@ -209,7 +209,7 @@ const AddProduct = () => {
             <div className="flex items-center">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="px-3 py-1 bg-gray-200 rounded-l"
+                className="px-3 py-1 bg-green-500 text-white rounded-r"
               >
                 -
               </button>
