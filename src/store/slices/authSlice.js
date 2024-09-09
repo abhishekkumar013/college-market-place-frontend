@@ -113,6 +113,7 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
     }
   } catch (error) {
     const errorMessage = error.response?.data?.message || error.message
+    console.log(errorMessage)
     toast.error(errorMessage)
   }
 }
