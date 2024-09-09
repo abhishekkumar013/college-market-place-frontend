@@ -67,9 +67,6 @@ export const checkLoginStatus = () => async (dispatch) => {
       if (data && data.user) {
         // Successfully retrieved user data, set as logged in
         dispatch(loginSuccess(data.user))
-      } else {
-        // No user data, treat as not logged in
-        dispatch(loginFailed())
       }
     } catch (error) {
       // Failed to retrieve session, treat as not logged in
