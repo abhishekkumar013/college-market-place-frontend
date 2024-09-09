@@ -91,16 +91,12 @@ export const logoutUser = () => async (dispatch) => {
 
 export const updateUserProfile = (userData) => async (dispatch, getState) => {
   try {
-    const { token } = getState().auth
+    // const { token } = getState().auth
     const { data } = await axios.put(
       `${server}/user/update-profile`,
       userData,
       {
         withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
       },
     )
 
@@ -113,7 +109,6 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
     }
   } catch (error) {
     const errorMessage = error.response?.data?.message || error.message
-    console.log(errorMessage)
     toast.error(errorMessage)
   }
 }
