@@ -20,6 +20,7 @@ const initialState = {
   cart: JSON.parse(localStorage.getItem('cart')) || [],
   message: '',
   loading: false,
+  isProductLoading: false,
   error: null,
   shouldRefreshProductList: false,
 }
@@ -118,6 +119,9 @@ const productSlice = createSlice({
       state.message = ''
       state.error = null
     },
+    setisProductLoading(state, action) {
+      state.isProductLoading = action.payload
+    },
   },
 })
 
@@ -143,13 +147,14 @@ export const {
   setMyPlacedProduct,
   clearMyPlacedProduct,
   myProdcutDelete,
+  setisProductLoading,
 } = productSlice.actions
 
 export default productSlice.reducer
 
 export const addNewProduct = (productData) => {
   return async (dispatch, getState) => {
-    dispatch(setLoading(true))
+    dispatch(setisProductLoading(true))
     dispatch(clearMessage())
 
     try {
@@ -170,7 +175,7 @@ export const addNewProduct = (productData) => {
         setError(error?.response?.data?.message || 'Failed to add product'),
       )
     } finally {
-      dispatch(setLoading(false))
+      dispatch(setisProductLoading(false))
     }
   }
 }
