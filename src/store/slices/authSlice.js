@@ -36,7 +36,7 @@ const authSlice = createSlice({
       localStorage.setItem('isLogin', 'false')
       localStorage.removeItem('user')
     },
-    updateProfileSuccess(state) {
+    updateProfileSuccess(state, action) {
       state.user = action.payload
       localStorage.setItem('user', JSON.stringify(action.payload))
     },
