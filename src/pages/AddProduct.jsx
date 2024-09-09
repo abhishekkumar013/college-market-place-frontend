@@ -65,7 +65,7 @@ const AddProduct = () => {
   const handleSubmit = async () => {
     const formData = new FormData()
     formData.append('name', name)
-    formData.append('category', category) // This should already be the category ID
+    if (category) formData.append('category', category) // This should already be the category ID
     formData.append('quantity', parseInt(quantity, 10))
     formData.append('desc', description)
     formData.append('mrp', parseFloat(mrp))
