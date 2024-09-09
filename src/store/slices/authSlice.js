@@ -59,7 +59,6 @@ export const checkLoginStatus = () => async (dispatch) => {
       const { data } = await axios.get(`${server}/user/login/success`, {
         withCredentials: true,
       })
-      console.log(data)
 
       if (data && data.user) {
         // Successfully retrieved user data, set as logged in
@@ -100,7 +99,7 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
       },
     )
 
-    console.log(data)
+    console.log('Update ', data)
 
     if (data.success) {
       toast.success(data.message)

@@ -66,8 +66,10 @@ const CustomDropdown = ({ value, onChange, options = [], placeholder }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  const normalizeString = (str) => str.toLowerCase().replace(/[^a-z0-9]/g, '')
+
   const filteredOptions = options.filter((option) =>
-    option.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    normalizeString(option.name).includes(normalizeString(searchTerm)),
   )
 
   const displayedOptions = searchTerm
