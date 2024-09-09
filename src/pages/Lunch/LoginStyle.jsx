@@ -48,15 +48,20 @@ const LoginStyle = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search)
+    const token = params.get('token')
+
+    console.log('Extracted Token:', token) // Debugging: Check the token value
+
+    if (token) {
+      dispatch(loginSuccess({ token: token, user: null }))
+    } else {
+      console.error('Token not found in the URL')
+    }
+
     const error = params.get('error')
     if (error) {
       setErrorMessage(decodeURIComponent(error))
       alert(error)
-    }
-    const token = params.get('token')
-    console.log(token)
-    if (token) {
-      dispatch(loginSuccess({ token: token, user: null }))
     }
   }, [location])
 
