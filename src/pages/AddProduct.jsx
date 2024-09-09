@@ -10,6 +10,7 @@ const AddProduct = () => {
   const navigate = useNavigate()
 
   const { user } = useSelector((state) => state.auth)
+  const { loading } = useSelector((state) => state.product)
 
   const [quantity, setQuantity] = useState(1)
   const [imagePreview, setImagePreview] = useState(null)
@@ -267,6 +268,7 @@ const AddProduct = () => {
         </div>
 
         <button
+          disabled={loading}
           onClick={handleSubmit}
           className="w-full mt-6 py-2 bg-green-500 text-white rounded hover:bg-green-600"
         >
