@@ -9,7 +9,8 @@ import store from './store/store.js'
 import { ToastContainer, toast } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
-import { ThemeProvider } from '@material-ui/core'
+import { ThemeProvider } from '@mui/material'
+
 import theme from './theme.js'
 
 export const server =
