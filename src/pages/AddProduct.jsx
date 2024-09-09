@@ -79,6 +79,16 @@ const AddProduct = () => {
     // }
 
     dispatch(addNewProduct(formData))
+    setQuantity(1)
+    setImagePreview(null)
+    setImage(null)
+    setName('')
+    setDescription('')
+    setCategory('')
+    setMrp('')
+    setDiscount('')
+    setFinalPrice('')
+    setAdditionalCharge('')
 
     // navigate('/product')
   }
@@ -275,8 +285,11 @@ const AddProduct = () => {
               ? 'bg-gray-400 cursor-not-allowed'
               : 'bg-green-500 hover:bg-green-600'
           }`}
+          style={{
+            cursor: loading ? 'not-allowed' : 'pointer',
+          }}
         >
-          {loading ? 'Loading...' : 'Submit'} // Show loading text when loading
+          {loading ? 'Loading...' : 'Submit'}
         </button>
       </div>
     </Layout>
