@@ -4,12 +4,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const initialState = {
-  isLogin: document.cookie.includes('verifytoken') || false,
-  token:
-    document.cookie
-      .split('; ')
-      .find((row) => row.startsWith('verifytoken='))
-      ?.split('=')[1] || null,
+  isLogin: localStorage.getItem('isLogin') === 'true' || false,
   user: (() => {
     const storedUser = localStorage.getItem('user')
     return storedUser && storedUser !== 'undefined'
@@ -25,36 +20,25 @@ const authSlice = createSlice({
   reducers: {
     loginSuccess(state, action) {
       state.isLogin = true
-      state.token = action.payload.token
-      state.user = action.payload.user
+      state.user = action.payload
       localStorage.setItem('isLogin', 'true')
-      localStorage.setItem('token', action.payload.token)
-      localStorage.setItem('user', JSON.stringify(action.payload.user))
+      localStorage.setItem('user', JSON.stringify(action.payload))
     },
-    loginFailed(state, action) {
+    loginFailed(state) {
       state.isLogin = false
-      state.token = null
       state.user = null
       localStorage.setItem('isLogin', 'false')
-      localStorage.removeItem('token')
       localStorage.removeItem('user')
     },
     logoutSuccess(state) {
       state.isLogin = false
-      state.token = null
       state.user = null
       localStorage.setItem('isLogin', 'false')
-      localStorage.removeItem('token')
       localStorage.removeItem('user')
-      localStorage.removeItem('hasMore')
-    },
-    updateProfileSuccess(state, action) {
-      state.user = action.payload
-      localStorage.removeItem('user')
-      localStorage.setItem('user', JSON.stringify(action.payload))
     },
   },
 })
+
 export const {
   loginSuccess,
   loginFailed,
@@ -65,28 +49,27 @@ export const {
 export default authSlice.reducer
 
 export const checkLoginStatus = () => async (dispatch) => {
-  const token = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith('verifytoken='))
-    ?.split('=')[1]
-
   const user = localStorage.getItem('user')
 
-  if (token && user) {
-    dispatch(loginSuccess({ token, user: JSON.parse(user) }))
+  if (user) {
+    dispatch(loginSuccess(JSON.parse(user)))
   } else {
     try {
+      // Call backend to check if the session is still valid
       const { data } = await axios.get(`${server}/user/login/success`, {
         withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
       })
+      console.log(data)
 
-      const { user } = data
-      dispatch(loginSuccess(user))
+      if (data && data.user) {
+        // Successfully retrieved user data, set as logged in
+        dispatch(loginSuccess(data.user))
+      } else {
+        // No user data, treat as not logged in
+        dispatch(loginFailed())
+      }
     } catch (error) {
+      // Failed to retrieve session, treat as not logged in
       dispatch(loginFailed())
     }
   }
