@@ -53,7 +53,7 @@ const MySales = () => {
               <div className="flex items-center space-x-3 w-full sm:w-auto mb-2 sm:mb-0 col-span-2">
                 <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
                   <img
-                    src={sale.product.image}
+                    src={sale?.product?.image?.url}
                     alt={sale.product.name}
                     className="w-full h-full object-cover"
                   />

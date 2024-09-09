@@ -105,7 +105,7 @@ const Product = () => {
   }
 
   return (
-    <Layout>
+    <Layout title="home" description="" keywords="" author="">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
           <h1 className="text-2xl font-bold mb-4 sm:mb-0">
@@ -143,7 +143,7 @@ const Product = () => {
                 >
                   <div className="mb-2 h-20 sm:h-28 flex items-center justify-center overflow-hidden">
                     <img
-                      src={product?.image}
+                      src={product?.image?.url}
                       alt={product?.name}
                       className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
                     />
@@ -180,7 +180,7 @@ const Product = () => {
                         </button>
                         <button
                           onClick={() => handleOrderNow(product)}
-                          className="flex-1 bg-green-500 text-white py-1.5 px-2 rounded-full hover:bg-green-600 transition-all duration-300 text-xs sm:text-sm hover:shadow-md"
+                          className="flex-1 bg-green-600 text-white py-1.5 px-2 rounded-full hover:bg-green-700 transition-all duration-300 text-xs sm:text-sm hover:shadow-md"
                         >
                           Buy Now
                         </button>

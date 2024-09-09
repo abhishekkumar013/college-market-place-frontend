@@ -34,6 +34,7 @@ import MySales from './components/products/MySales.jsx'
 import Myproducut from './components/products/Myproducut.jsx'
 import { getAllCategory } from './store/slices/categorySlice.js'
 import MyOrder from './components/products/MyOrder.jsx'
+import Restaurants from './pages/Restaurants.jsx'
 
 function App() {
   const location = useLocation()
@@ -80,6 +81,7 @@ function App() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/orders" element={<OrderHistory />} />
       <Route path="/category" element={<AddCategory />} />
+      <Route path="/restaurants" element={<Restaurants />} />
       <Route path="/profile" element={<Sidebar />}>
         <Route index element={<Profile />} />
         <Route path="/profile/request" element={<MyRequest />} />

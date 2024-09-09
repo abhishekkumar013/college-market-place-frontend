@@ -10,7 +10,7 @@ const About = () => {
       imageUrl: '/images/abhi.jpg',
       isHighlighted: false,
       linkdin: 'https://www.linkedin.com/in/abhishek-kumar-a03253262/',
-      github: 'https://github.com/abhishekkumar013',
+
       insta: 'https://www.instagram.com/_abhi._.arya/',
     },
     {
@@ -19,7 +19,6 @@ const About = () => {
       imageUrl: '/path/to/abhishek-tiwari-image.jpg',
       isHighlighted: false,
       linkdin: '',
-      github: '',
       insta: '',
     },
   ]

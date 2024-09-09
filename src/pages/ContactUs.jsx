@@ -2,27 +2,16 @@ import React from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { BsFillTelephoneFill } from 'react-icons/bs'
+import { FiInstagram } from 'react-icons/fi'
 import Layout from '../components/Layout/Layout'
 
 const ContactUs = () => {
   const contactChannels = [
     {
-      name: 'Whatsapp',
-      icon: FaWhatsapp,
-      link: 'https://wa.me/',
-      color: 'text-green-500',
-    },
-    {
-      name: 'Gmail',
-      icon: MdEmail,
-      link: 'mailto:',
+      name: 'Instagram',
+      icon: FiInstagram,
+      link: 'https://www.instagram.com/kiitmart/',
       color: 'text-red-500',
-    },
-    {
-      name: 'Call Us',
-      icon: BsFillTelephoneFill,
-      link: 'tel:+1234567890',
-      color: 'text-blue-500',
     },
   ]
 

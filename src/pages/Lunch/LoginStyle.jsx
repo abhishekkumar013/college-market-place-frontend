@@ -56,7 +56,12 @@ const LoginStyle = () => {
 
   const handleLogin = () => {
     setErrorMessage(null)
-    window.open('http://localhost:8080/api/v1/user/auth/google', '_self')
+    const url =
+      import.meta.env.VITE_API_ENV === 'production'
+        ? import.meta.env.VITE_API_LOGIN_DEPLOY
+        : import.meta.env.VITE_API_LOGIN_LOCAL
+    console.log(url)
+    window.open(url, '_self')
   }
 
   if (!showLogin) {

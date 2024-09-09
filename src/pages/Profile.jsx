@@ -202,11 +202,15 @@ const Profile = () => {
             </div>
             <div>
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-bold "
                 htmlFor="phone"
               >
                 WhatsApp No:
               </label>
+              <span className="block text-gray-400 text-xs mb-2">
+                T&C: KIITMart uses your phone number to facilitate connections
+                with other users.
+              </span>
               <input
                 id="phone"
                 type="tel"

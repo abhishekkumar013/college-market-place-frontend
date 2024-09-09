@@ -36,14 +36,14 @@ const DeveloperCard = ({
         >
           <FaLinkedin size={24} />
         </Link>
-        <Link
+        {/* <Link
           to={github}
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-800 hover:text-gray-600"
         >
           <FaGithub size={24} />
-        </Link>
+        </Link> */}
         <Link
           to={insta}
           target="_blank"

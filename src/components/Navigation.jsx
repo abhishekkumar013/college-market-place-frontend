@@ -8,7 +8,8 @@ const Navigation = () => {
     { id: 2, name: 'Products', url: '/product' },
     { id: 3, name: 'Product listing', url: '/product-listing' },
     { id: 4, name: 'Request', url: '/all-request' },
-    { id: 5, name: 'Category', url: '/category' },
+    { id: 5, name: 'Restaurants', url: '/restaurants' },
+    { id: 6, name: 'Category', url: '/category' },
   ]
   useEffect(() => {
     // Update selected state based on the current location

@@ -44,7 +44,7 @@ const NewlyAddedCard = ({ product }) => {
   return (
     <div className="bg-white rounded-lg p-3 flex flex-col items-center border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
       <img
-        src={product.image}
+        src={product?.image?.url}
         alt={product.name}
         className="w-full h-24 object-contain mb-1 transition-transform duration-300 ease-in-out transform hover:scale-110"
       />
@@ -66,7 +66,7 @@ const NewlyAddedCard = ({ product }) => {
         {product.isSold ? (
           <button
             disabled
-            className="flex-1 bg-red-500 text-white py-1 px-2 rounded-full text-center text-xs cursor-not-allowed"
+            className="flex-1 bg-red-500 text-white py-1 px-2 lg:py-2 lg:px-2 lg:text-md lg:font-bold rounded-full text-center text-xs cursor-not-allowed"
           >
             Sold Out
           </button>
@@ -74,13 +74,13 @@ const NewlyAddedCard = ({ product }) => {
           <>
             <button
               onClick={handleAddToCart}
-              className="w-full bg-green-500 text-white py-1 px-2 rounded-full hover:bg-green-600 transition-colors duration-300 text-xs"
+              className="w-full bg-green-500 text-white py-1 px-2 lg:py-2 lg:px-2 lg:text-md lg:font-bold rounded-full hover:bg-green-600 transition-colors duration-300 text-xs"
             >
               Add to cart
             </button>
             <button
               onClick={() => handleOrderNow(product)}
-              className="w-full bg-green-500 text-white py-1 px-2 rounded-full hover:bg-green-600 transition-colors duration-300 text-xs"
+              className="w-full bg-green-500 text-white py-1 px-2 lg:py-2 lg:px-2 lg:text-md lg:font-bold rounded-full hover:bg-green-600 transition-colors duration-300 text-xs"
             >
               Buy Now
             </button>

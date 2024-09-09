@@ -46,6 +46,7 @@ const authSlice = createSlice({
     },
     updateProfileSuccess(state, action) {
       state.user = action.payload
+      localStorage.removeItem('user')
       localStorage.setItem('user', JSON.stringify(action.payload))
     },
   },
@@ -67,24 +68,22 @@ export const checkLoginStatus = () => async (dispatch) => {
     dispatch(loginSuccess({ token, user: JSON.parse(user) }))
   } else {
     try {
+      console.log('Calling  login sucess')
       const { data } = await axios.get(`${server}/user/login/success`, {
         withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       })
 
       const { user } = data
+      console.log('login user', user)
 
       dispatch(loginSuccess(user))
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Authentication failed')
+      console.log('login error', error.response?.data?.message)
       dispatch(loginFailed())
     }
   }
 }
 
-// Thunk for logging out
 export const logoutUser = () => async (dispatch) => {
   try {
     await axios.get(`${server}/user/logout`, {
@@ -95,11 +94,10 @@ export const logoutUser = () => async (dispatch) => {
     toast.success('Logged out successfully')
   } catch (error) {
     toast.error('Error logging out')
-    dispatch(logoutSuccess()) // Still logout on client side even if server request fails
+    dispatch(logoutSuccess())
   }
 }
 
-// Thunk for updating user profile
 export const updateUserProfile = (userData) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth

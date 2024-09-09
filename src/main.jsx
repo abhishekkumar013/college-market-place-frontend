@@ -12,7 +12,12 @@ import 'react-toastify/dist/ReactToastify.css'
 import { ThemeProvider } from '@material-ui/core'
 import theme from './theme.js'
 
-export const server = 'http://localhost:8080/api/v1'
+export const server =
+  import.meta.env.VITE_API_ENV === 'production'
+    ? import.meta.env.VITE_API_Deploy_Bacakend
+    : import.meta.env.VITE_API_Local_Backend
+
+console.log(server)
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>

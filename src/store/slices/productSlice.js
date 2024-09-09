@@ -680,4 +680,43 @@ export const updateOrder = (dataobj) => {
   }
 }
 
-//
+export const updateProductImage = (dataobj) => {
+  return async (dispatch, getState) => {
+    dispatch(setLoading(true))
+    dispatch(clearMessage())
+    const { token } = getState().auth
+    console.log(dataobj)
+    try {
+      const formData = new FormData()
+      formData.append('image', dataobj.image)
+
+      const { data } = await axios.put(
+        `${server}/product/update-image/${dataobj.id}`,
+        formData,
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      )
+      console.log('res', data)
+
+      if (data.success) {
+        toast.success(data.message)
+        dispatch(getAllMyProduct())
+      } else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error(error.response?.data?.message)
+      dispatch(
+        setError(error.response?.data?.message || 'Failed to update image'),
+      )
+    } finally {
+      dispatch(setLoading(false))
+    }
+  }
+}

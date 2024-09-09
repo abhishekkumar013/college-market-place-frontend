@@ -10,7 +10,10 @@ import {
   TextField,
   Box,
 } from '@material-ui/core'
-import { updateProduct } from '../../store/slices/productSlice'
+import {
+  updateProduct,
+  updateProductImage,
+} from '../../store/slices/productSlice'
 // import { updateProduct, updateProductImage } from '../../store/slices/productSlice';
 
 const ProductEditDialog = ({ open, onClose, product }) => {
@@ -76,7 +79,7 @@ const ProductEditDialog = ({ open, onClose, product }) => {
 
   const handleUpdateImage = () => {
     if (newImage) {
-      // dispatch(updateProductImage({ id: product._id, image: newImage }));
+      dispatch(updateProductImage({ id: product._id, image: newImage }))
       onClose()
     }
   }

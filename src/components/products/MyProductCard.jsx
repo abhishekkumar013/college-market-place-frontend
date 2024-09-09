@@ -29,7 +29,7 @@ const MyProductCard = ({ product }) => {
     <div className="flex flex-col md:grid md:grid-cols-5 items-center p-4 border-b last:border-b-0 hover:bg-gray-50 md:me-2">
       <div className="flex items-center space-x-3 mb-2 md:mb-0 col-span-2">
         <img
-          src={product.image}
+          src={product?.image?.url}
           alt={product.name}
           className="w-12 h-12 rounded-full object-cover"
         />
