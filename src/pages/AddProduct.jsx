@@ -10,7 +10,7 @@ const AddProduct = () => {
   const navigate = useNavigate()
 
   const { user } = useSelector((state) => state.auth)
-  const { loading } = useSelector((state) => state.product)
+  const { isProductLoading } = useSelector((state) => state.product)
 
   const [quantity, setQuantity] = useState(1)
   const [imagePreview, setImagePreview] = useState(null)
@@ -282,18 +282,18 @@ const AddProduct = () => {
         </div>
 
         <button
-          disabled={loading}
-          onClick={!loading ? handleSubmit : null}
+          disabled={isProductLoading}
+          onClick={!isProductLoading ? handleSubmit : null}
           className={`w-full mt-6 py-2 rounded text-white ${
-            loading
+            isProductLoading
               ? 'bg-gray-400 cursor-not-allowed'
               : 'bg-green-500 hover:bg-green-600'
           }`}
           style={{
-            cursor: loading ? 'not-allowed' : 'pointer',
+            cursor: isProductLoading ? 'not-allowed' : 'pointer',
           }}
         >
-          {loading ? 'Loading...' : 'Submit'}
+          {isProductLoading ? 'Loading...' : 'Submit'}
         </button>
       </div>
     </Layout>
