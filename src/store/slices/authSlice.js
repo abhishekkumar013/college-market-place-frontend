@@ -4,8 +4,12 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const initialState = {
-  isLogin: localStorage.getItem('isLogin') === 'true' || false,
-  token: localStorage.getItem('token') || null,
+  isLogin: document.cookie.includes('verifytoken') || false,
+  token:
+    document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('verifytoken='))
+      ?.split('=')[1] || null,
   user: (() => {
     const storedUser = localStorage.getItem('user')
     return storedUser && storedUser !== 'undefined'
@@ -61,14 +65,17 @@ export const {
 export default authSlice.reducer
 
 export const checkLoginStatus = () => async (dispatch) => {
-  const token = localStorage.getItem('token')
+  const token = document.cookie
+    .split('; ')
+    .find((row) => row.startsWith('verifytoken='))
+    ?.split('=')[1]
+
   const user = localStorage.getItem('user')
 
   if (token && user) {
     dispatch(loginSuccess({ token, user: JSON.parse(user) }))
   } else {
     try {
-      console.log('Calling  login sucess')
       const { data } = await axios.get(`${server}/user/login/success`, {
         withCredentials: true,
         headers: {
@@ -78,11 +85,8 @@ export const checkLoginStatus = () => async (dispatch) => {
       })
 
       const { user } = data
-      console.log('login user', user)
-
       dispatch(loginSuccess(user))
     } catch (error) {
-      console.log('login error', error.response?.data?.message)
       dispatch(loginFailed())
     }
   }
@@ -105,7 +109,6 @@ export const logoutUser = () => async (dispatch) => {
 export const updateUserProfile = (userData) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth
-    console.log(token)
     const { data } = await axios.put(
       `${server}/user/update-profile`,
       userData,
@@ -117,7 +120,6 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
         },
       },
     )
-    console.log(data)
 
     if (data.success) {
       toast.success(data.message)
@@ -127,7 +129,6 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
     }
   } catch (error) {
     const errorMessage = error.response?.data?.message || error.message
-    console.error(errorMessage)
     toast.error(errorMessage)
   }
 }

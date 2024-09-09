@@ -7,7 +7,6 @@ import { loginSuccess } from '../../store/slices/authSlice'
 
 const LoginStyle = () => {
   const navigate = useNavigate()
-  const location = useLocation()
   const dispatch = useDispatch()
   const [errorMessage, setErrorMessage] = useState(null)
   const [showLogin, setShowLogin] = useState(false)
@@ -47,24 +46,13 @@ const LoginStyle = () => {
   }, [])
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    console.log('Query Parameters:', params)
-    const token = params.get('token')
-
-    console.log('Extracted Token:', token) // Debugging: Check the token value
-
-    if (token) {
-      dispatch(loginSuccess({ token: token, user: null }))
-    } else {
-      console.error('Token not found in the URL')
-    }
-
+    const params = new URLSearchParams(window.location.search)
     const error = params.get('error')
     if (error) {
       setErrorMessage(decodeURIComponent(error))
       alert(error)
     }
-  }, [location])
+  }, [])
 
   const handleLogin = () => {
     setErrorMessage(null)
@@ -72,7 +60,6 @@ const LoginStyle = () => {
       import.meta.env.VITE_API_ENV === 'production'
         ? import.meta.env.VITE_API_LOGIN_DEPLOY
         : import.meta.env.VITE_API_LOGIN_LOCAL
-    console.log(url)
     window.open(url, '_self')
   }
 
