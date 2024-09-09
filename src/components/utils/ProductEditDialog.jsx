@@ -9,7 +9,7 @@ import {
   Grid,
   TextField,
   Box,
-} from '@material-ui/core'
+} from '@mui/material'
 import {
   updateProduct,
   updateProductImage,
