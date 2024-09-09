@@ -36,6 +36,10 @@ const authSlice = createSlice({
       localStorage.setItem('isLogin', 'false')
       localStorage.removeItem('user')
     },
+    updateProfileSuccess(state) {
+      state.user = action.payload
+      localStorage.setItem('user', JSON.stringify(action.payload))
+    },
   },
 })
 
@@ -102,7 +106,7 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
     if (data.success) {
       toast.success(data.message)
       dispatch(updateProfileSuccess(data.data))
-      dispatch(checkLoginStatus())
+      // dispatch(loginSuccess(data.user))
     }
   } catch (error) {
     const errorMessage = error.response?.data?.message || error.message
