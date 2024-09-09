@@ -151,22 +151,18 @@ export const addNewProduct = (productData) => {
   return async (dispatch, getState) => {
     dispatch(setLoading(true))
     dispatch(clearMessage())
-    const { token } = getState().auth
 
     try {
       const { data } = await axios.post(`${server}/product/add`, productData, {
         withCredentials: true,
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`,
         },
       })
       if (data.success) {
         toast.success(data.message)
         dispatch(addProduct(data.data))
         dispatch(setMessage(data.message || 'Product added successfully'))
-      } else {
-        toast.error(data.message)
       }
     } catch (error) {
       toast.error(error?.response?.data?.message || 'Failed to add product')
@@ -204,14 +200,11 @@ export const getAllProducts = (page = 1, limit = 8) => {
   return async (dispatch, getState) => {
     dispatch(setLoading(true))
     dispatch(clearMessage())
-    const { token } = getState().auth
+    h
     try {
       const { data } = await axios.get(`${server}/product/all`, {
         params: { page, limit },
         withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       })
 
       dispatch(
