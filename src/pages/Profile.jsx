@@ -70,8 +70,10 @@ const CustomDropdown = ({ value, onChange, options }) => {
     }
   }, [])
 
+  const normalizeString = (str) => str.toLowerCase().replace(/[^a-z0-9]/g, '')
+
   const filteredOptions = options.filter((option) =>
-    option.toLowerCase().includes(searchTerm.toLowerCase()),
+    normalizeString(option).includes(normalizeString(searchTerm)),
   )
 
   const displayedOptions = searchTerm ? filteredOptions : options.slice(0, 4)
