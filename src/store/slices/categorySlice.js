@@ -34,10 +34,11 @@ export const addNewCategory = (data) => {
           },
         },
       )
-      console.log(response)
+      // console.log(response)
+      toast.success(response?.data?.message)
       //   dispatch(addCategory(response.data))
     } catch (error) {
-      console.log(error.response)
+      toast.error(error?.response?.data?.message)
     }
   }
 }

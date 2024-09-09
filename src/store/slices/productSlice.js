@@ -169,9 +169,9 @@ export const addNewProduct = (productData) => {
         toast.error(data.message)
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to add product')
+      toast.error(error?.response?.data?.message || 'Failed to add product')
       dispatch(
-        setError(error.response?.data?.message || 'Failed to add product'),
+        setError(error?.response?.data?.message || 'Failed to add product'),
       )
     } finally {
       dispatch(setLoading(false))

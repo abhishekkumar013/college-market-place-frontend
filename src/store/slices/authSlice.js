@@ -99,14 +99,10 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
       },
     )
 
-    console.log('Update ', data)
-
     if (data.success) {
       toast.success(data.message)
       dispatch(updateProfileSuccess(data.data))
       dispatch(checkLoginStatus())
-    } else {
-      toast.error(data.message)
     }
   } catch (error) {
     const errorMessage = error.response?.data?.message || error.message
