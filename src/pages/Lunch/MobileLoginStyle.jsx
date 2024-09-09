@@ -52,6 +52,10 @@ const MobileLoginStyle = () => {
       setErrorMessage(decodeURIComponent(error))
       alert(error)
     }
+    const token = params.get('token')
+    if (token) {
+      dispatch(loginSuccess({ token: token, user: null }))
+    }
   }, [location])
 
   const handleLogin = () => {

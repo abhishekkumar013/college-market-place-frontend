@@ -54,7 +54,9 @@ const LoginStyle = () => {
       alert(error)
     }
     const token = params.get('token')
-    dispatch(loginSuccess({ token: token, user: null }))
+    if(token){
+      dispatch(loginSuccess({ token: token, user: null }))
+    }
   }, [location])
 
   const handleLogin = () => {
