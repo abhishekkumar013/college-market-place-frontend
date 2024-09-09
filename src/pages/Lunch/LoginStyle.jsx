@@ -48,6 +48,7 @@ const LoginStyle = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search)
+    console.log('Query Parameters:', location.search)
     const token = params.get('token')
 
     console.log('Extracted Token:', token) // Debugging: Check the token value
