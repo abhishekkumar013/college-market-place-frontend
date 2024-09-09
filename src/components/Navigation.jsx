@@ -29,7 +29,7 @@ const Navigation = () => {
                 to={item.url}
                 className={`text-white ${
                   selected === item.id && 'bg-green-600'
-                } hover:bg-green-600 px-3 py-2 rounded-md text-sm font-medium inline-block`}
+                } hover:bg-green-600 px-3 py-2 rounded-md text-md font-medium inline-block`}
               >
                 {item.name}
               </Link>
