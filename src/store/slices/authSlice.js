@@ -71,6 +71,10 @@ export const checkLoginStatus = () => async (dispatch) => {
       console.log('Calling  login sucess')
       const { data } = await axios.get(`${server}/user/login/success`, {
         withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
       })
 
       const { user } = data

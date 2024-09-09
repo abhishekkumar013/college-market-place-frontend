@@ -3,6 +3,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { gsap } from 'gsap'
+import { loginSuccess } from '../../store/slices/authSlice'
 
 const LoginStyle = () => {
   const navigate = useNavigate()
@@ -52,6 +53,8 @@ const LoginStyle = () => {
       setErrorMessage(decodeURIComponent(error))
       alert(error)
     }
+    const token = params.get('token')
+    dispatch(loginSuccess({ token: token, user: null }))
   }, [location])
 
   const handleLogin = () => {
