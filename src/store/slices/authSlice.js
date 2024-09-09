@@ -100,6 +100,8 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
       },
     )
 
+    console.log(data)
+
     if (data.success) {
       toast.success(data.message)
       dispatch(updateProfileSuccess(data.data))
