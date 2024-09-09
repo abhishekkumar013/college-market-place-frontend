@@ -269,10 +269,14 @@ const AddProduct = () => {
 
         <button
           disabled={loading}
-          onClick={handleSubmit}
-          className="w-full mt-6 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          onClick={!loading ? handleSubmit : null}
+          className={`w-full mt-6 py-2 rounded text-white ${
+            loading
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-green-500 hover:bg-green-600'
+          }`}
         >
-          Submit
+          {loading ? 'Loading...' : 'Submit'} // Show loading text when loading
         </button>
       </div>
     </Layout>
