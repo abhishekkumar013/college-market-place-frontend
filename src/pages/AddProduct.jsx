@@ -50,11 +50,15 @@ const AddProduct = () => {
     setDiscount(value)
     updateFinalPrice(mrp, value)
   }
-  const handleAdditionalChargeChange = (e) =>
-    setAdditionalCharge(e.target.value)
-
+  const handleAdditionalChargeChange = (e) => {
+    const value = e.target.value
+    setAdditionalCharge(value)
+    updateFinalPrice(mrp, discount, value)
+  }
   const updateFinalPrice = (mrp, discount) => {
-    const price = mrp - mrp * (discount / 100) + Number(additionalCharge)
+    const price =
+      mrp - mrp * (discount / 100) + parseFloat(additionalCharge || 0)
+
     setFinalPrice(price.toFixed(2))
   }
 
