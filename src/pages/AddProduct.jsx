@@ -48,7 +48,7 @@ const AddProduct = () => {
   const handleDiscountChange = (e) => {
     const value = e.target.value
     setDiscount(value)
-    updateFinalPrice(mrp, value)
+    updateFinalPrice(mrp, value, additionalCharge)
   }
   const handleAdditionalChargeChange = (e) => {
     const value = e.target.value
