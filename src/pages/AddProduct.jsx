@@ -54,7 +54,7 @@ const AddProduct = () => {
     setAdditionalCharge(e.target.value)
 
   const updateFinalPrice = (mrp, discount) => {
-    const price = mrp - mrp * (discount / 100)
+    const price = mrp - mrp * (discount / 100) + Number(additionalCharge)
     setFinalPrice(price.toFixed(2))
   }
 
@@ -269,7 +269,7 @@ const AddProduct = () => {
             <label className="block mb-2">Any additional charges</label>
             <input
               type="text"
-              placeholder="Enter the charges"
+              placeholder="Enter the charges in rupee"
               className="w-full p-2 border rounded"
               value={additionalCharge}
               onChange={handleAdditionalChargeChange}

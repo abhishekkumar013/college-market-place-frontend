@@ -14,7 +14,6 @@ import {
   updateProduct,
   updateProductImage,
 } from '../../store/slices/productSlice'
-// import { updateProduct, updateProductImage } from '../../store/slices/productSlice';
 
 const ProductEditDialog = ({ open, onClose, product }) => {
   const dispatch = useDispatch()
@@ -50,7 +49,14 @@ const ProductEditDialog = ({ open, onClose, product }) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target
     setEditedProduct((prev) => {
-      const updatedProduct = { ...prev, [name]: value }
+      let updatedValue = value
+
+      // Prevent quantity from being less than 0
+      if (name === 'quantity') {
+        updatedValue = Math.max(0, parseInt(value, 10))
+      }
+
+      const updatedProduct = { ...prev, [name]: updatedValue }
       if (
         name === 'mrp' ||
         name === 'discount' ||
@@ -144,6 +150,7 @@ const ProductEditDialog = ({ open, onClose, product }) => {
                 value={editedProduct.quantity}
                 onChange={handleInputChange}
                 type="number"
+                inputProps={{ min: 0 }}
                 margin="normal"
                 style={{ width: '48%' }}
               />
