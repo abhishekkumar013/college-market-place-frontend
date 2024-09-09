@@ -205,7 +205,7 @@ export const getAllProducts = (page = 1, limit = 8) => {
   return async (dispatch, getState) => {
     dispatch(setLoading(true))
     dispatch(clearMessage())
-    h
+
     try {
       const { data } = await axios.get(`${server}/product/all`, {
         params: { page, limit },
@@ -231,16 +231,12 @@ export const getAllProducts = (page = 1, limit = 8) => {
 // latest
 export const getAllLatestProducts = () => {
   return async (dispatch, getState) => {
-    const { token } = getState().auth
     dispatch(setLoading(true))
     dispatch(clearMessage())
 
     try {
       const { data } = await axios.get(`${server}/product/latest`, {
         withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       })
 
       dispatch(setAllLLatestProducts(data.data))
@@ -325,7 +321,6 @@ export const getAllMyProduct = () => {
           error.response?.data?.message || 'Failed to get youur product',
         ),
       )
-      toast.error(error.response?.data?.message)
     } finally {
       dispatch(setLoading(false))
     }
@@ -347,8 +342,6 @@ export const getAllMyOrder = () => {
 
       if (data.data && data.data.length > 0) {
         dispatch(setMyOrdr(data.data))
-      } else {
-        dispatch(clearMyOrdr())
       }
     } catch (error) {
       dispatch(
@@ -356,6 +349,7 @@ export const getAllMyOrder = () => {
           error.response?.data?.message || 'Failed to get youur product',
         ),
       )
+      dispatch(clearMyOrdr())
     } finally {
       dispatch(setLoading(false))
     }
@@ -376,13 +370,12 @@ export const getAllMySales = () => {
 
       if (data.data && data.data.length > 0) {
         dispatch(setMySales(data.data))
-      } else {
-        dispatch(clearMysales())
       }
     } catch (error) {
       dispatch(
         setError(error.response?.data?.message || 'Failed to get your product'),
       )
+      dispatch(clearMysales())
     } finally {
       dispatch(setLoading(false))
     }
@@ -394,25 +387,21 @@ export const getAllReviewOrder = () => {
   return async (dispatch, getState) => {
     dispatch(setLoading(true))
     dispatch(clearMessage())
-    const { token } = getState().auth
+
     try {
       const { data } = await axios.get(`${server}/order/get-seller`, {
         withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       })
       console.log('Hii ', data)
 
       if (data.data && data.data.length > 0) {
         dispatch(setMyPlacedProduct(data.data))
-      } else {
-        dispatch(clearMyPlacedProduct())
       }
     } catch (error) {
       dispatch(
         setError(error.response?.data?.message || 'Failed to get your product'),
       )
+      dispatch(clearMyPlacedProduct())
     } finally {
       dispatch(setLoading(false))
     }
@@ -433,8 +422,6 @@ export const deleteMyProduct = (id) => {
 
       if (data.success) {
         toast.success(data.message)
-      } else {
-        toast.error(data.message)
       }
       dispatch(myProdcutDelete())
     } catch (error) {
@@ -443,6 +430,7 @@ export const deleteMyProduct = (id) => {
           error.response?.data?.message || 'Failed to delete your product',
         ),
       )
+      toast.error(error.response?.data?.message)
     } finally {
       dispatch(setLoading(false))
     }
