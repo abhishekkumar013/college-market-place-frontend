@@ -148,7 +148,7 @@ const Product = () => {
                       className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
-                  <h2 className="font-bold text-center text-sm sm:text-base mb-1 truncate group-hover:text-blue-600 transition-colors duration-300">
+                  <h2 className="font-bold text-center text-md sm:text-base mb-1 truncate group-hover:text-blue-600 transition-colors duration-300">
                     {product?.name}
                   </h2>
                   <div className="flex justify-between items-center mb-1">

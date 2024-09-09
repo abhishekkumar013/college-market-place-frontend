@@ -48,7 +48,7 @@ const NewlyAddedCard = ({ product }) => {
         alt={product.name}
         className="w-full h-24 object-contain mb-1 transition-transform duration-300 ease-in-out transform hover:scale-110"
       />
-      <p className="text-center font-semibold text-sm hover:text-green-600 transition-colors duration-300 truncate w-full">
+      <p className="text-center font-semibold text-md hover:text-green-600 transition-colors duration-300 truncate w-full">
         {product.name}
       </p>
       <div className="flex justify-between items-center w-full mt-1">
