@@ -92,7 +92,7 @@ const LoginStyle = () => {
       <div className="w-1/2 bg-green-500 flex flex-col items-center justify-center gap-10">
         <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
-            Sign in to your KIIT account
+            Sign in with your KIIT account
           </h2>
           {errorMessage && (
             <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded text-center">
