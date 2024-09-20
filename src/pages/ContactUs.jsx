@@ -72,7 +72,7 @@ const ContactUs = () => {
 
         <div className="w-full max-w-md sm:max-w-lg md:max-w-2xl bg-white p-6 md:p-8 border border-gray-300 rounded-lg shadow-md">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
-            Rate Us and Leave a Message
+            Rate Us and Suggest for Improvement
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
