@@ -35,7 +35,6 @@ const ContactUs = () => {
       )
       toast.success(data.message)
     } catch (error) {
-      console.log(error)
       toast.error('Try to submit agian')
     } finally {
       setRating(1)
