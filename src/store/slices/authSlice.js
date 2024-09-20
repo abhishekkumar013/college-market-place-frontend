@@ -31,10 +31,10 @@ const authSlice = createSlice({
       localStorage.removeItem('user')
     },
     logoutSuccess(state) {
-      state.isLogin = false
-      state.user = null
       localStorage.setItem('isLogin', 'false')
       localStorage.removeItem('user')
+      state.isLogin = false
+      state.user = null
     },
     updateProfileSuccess(state, action) {
       state.user = action.payload

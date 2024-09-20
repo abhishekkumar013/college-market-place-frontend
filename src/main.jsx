@@ -18,7 +18,6 @@ export const server =
     ? import.meta.env.VITE_API_Deploy_Bacakend
     : import.meta.env.VITE_API_Local_Backend
 
-console.log(server)
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>

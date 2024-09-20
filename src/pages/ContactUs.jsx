@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { FiInstagram } from 'react-icons/fi'
 import Layout from '../components/Layout/Layout'
+import axios from 'axios'
+import { server } from '../main'
+import { toast } from 'react-toastify'
 
 const ContactUs = () => {
+  const [rating, setRating] = useState(1)
+  const [message, setMessage] = useState('')
+
   const contactChannels = [
     {
       name: 'Instagram',
@@ -15,10 +21,32 @@ const ContactUs = () => {
     },
   ]
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const { data } = await axios.post(
+        `${server}/feedback/add-feedback`,
+        {
+          rating,
+          message,
+        },
+        { withCredentials: true },
+      )
+      toast.success(data.message)
+    } catch (error) {
+      console.log(error)
+      toast.error('Try to submit agian')
+    } finally {
+      setRating(0)
+      setMessage('')
+    }
+  }
+
   return (
     <Layout title="home" description="" keywords="" author="">
-      <div className="flex items-center justify-center mt-20 2xl:mt-32 p-4">
-        <div className="w-full max-w-md sm:max-w-lg md:max-w-2xl bg-white  p-6 md:p-8">
+      <div className="flex flex-col items-center justify-center mt-20 2xl:mt-32 p-4 space-y-8">
+        <div className="w-full max-w-md sm:max-w-lg md:max-w-2xl bg-white p-6 md:p-8 ">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
             You may contact us via these channels:
           </h2>
@@ -40,6 +68,60 @@ const ContactUs = () => {
               </a>
             ))}
           </div>
+        </div>
+
+        <div className="w-full max-w-md sm:max-w-lg md:max-w-2xl bg-white p-6 md:p-8 border border-gray-300 rounded-lg shadow-md">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
+            Rate Us and Leave a Message
+          </h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label
+                htmlFor="rating"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Rating
+              </label>
+              <div className="flex justify-center space-x-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    type="button"
+                    onClick={() => setRating(star)}
+                    className={`text-3xl ${
+                      star <= rating ? 'text-yellow-400' : 'text-gray-300'
+                    } focus:outline-none`}
+                  >
+                    ★
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                className="mt-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
+            </div>
+            <div>
+              <button
+                type="submit"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </Layout>
