@@ -46,7 +46,7 @@ To get the project up and running locally, follow these steps:
    npm start
 4. **Access the Application:**
    ```bash
-   http://localhost:3000
+   http://localhost:5173
 
 
 ## Future Enhancements
@@ -57,7 +57,12 @@ To get the project up and running locally, follow these steps:
     
 * **Order Tracking:** Add order tracking features to keep buyers updated on their purchases.
 
+## Contributing
+
+Contributions are welcome! Please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
 ## Contributors
 
-* **Abhishek Tiwari** - UI/UX Designer
 * **Abhishek Kumar** - Developer
+* **Abhishek Tiwari** - UI/UX Designer
+
