@@ -14,7 +14,7 @@ const FeedBackNotification = () => {
 
     // Show notification only if user needs to give feedback and hasn't dismissed it before
     setIsVisible(needsFeedback && !hasBeenDismissed)
-  }, [user.hasFeedback])
+  }, [])
 
   const handleDismiss = () => {
     setIsVisible(false)
