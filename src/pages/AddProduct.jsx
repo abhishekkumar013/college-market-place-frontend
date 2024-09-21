@@ -119,7 +119,7 @@ const AddProduct = () => {
   }
 
   return (
-    <Layout title="home" description="" keywords="" author="">
+    <Layout title="Product-Listing" description="" keywords="" author="">
       <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md mt-4">
         <h1 className="text-2xl font-bold mb-6">Add Your Product</h1>
 
