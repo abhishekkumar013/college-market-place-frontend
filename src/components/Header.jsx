@@ -8,10 +8,14 @@ import Navigation from './Navigation'
 import PhoneUpdateNotification from './Notifaction/PhoneUpdate'
 import { Menu, X, Search, User } from 'lucide-react'
 import MobileUserActions from './UserActionAll/MobileUserAction'
+import FeedBackNotification from './Notifaction/FeedbackNotification'
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(null)
   const { user } = useSelector((state) => state.auth)
+  const hasBeenDismissed =
+    localStorage.getItem('feedbackNotificationDismissed') === 'true'
+  console.log(!hasBeenDismissed)
 
   const toggleMenu = (menuName) => {
     setOpenMenu(openMenu === menuName ? null : menuName)
@@ -90,7 +94,11 @@ const Header = () => {
         )}
 
         {/* Phone Update Notification */}
-        {user && !user?.phone && <PhoneUpdateNotification />}
+        {user && !user?.phone ? (
+          <PhoneUpdateNotification />
+        ) : (
+          <FeedBackNotification />
+        )}
 
         {/* Navigation - hidden on mobile */}
         <div className="hidden lg:block">
@@ -99,7 +107,11 @@ const Header = () => {
       </header>
       {/* Spacer to prevent content from being hidden under the fixed header */}
       <div
-        className={`${user && !user.phone ? 'h-32 lg:h-40' : 'h-20 lg:h-28'}`}
+        className={`${
+          user && (!hasBeenDismissed || !user.phone)
+            ? 'h-32 lg:h-40'
+            : 'h-20 lg:h-28'
+        }`}
       ></div>
     </>
   )

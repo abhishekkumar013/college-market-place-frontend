@@ -24,7 +24,12 @@ const ProducRequesttList = () => {
 
   if (loading && allrequest.length == 0 && !isDialogOpen) {
     return (
-      <Layout title="home" description="" keywords="" author="">
+      <Layout
+        title="Product Request"
+        description="KIITMart's request page displays existing product requests and allows users to submit new requests. Customers can view a list of current requests including product names and quantities. The 'Add New Request' feature enables users to easily input desired products and quantities, facilitating product sourcing and availability on the platform."
+        keywords="KIITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list"
+        author="Abhishek Kumar"
+      >
         <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
           <div className=" p-8 text-center">
             <Loader />
@@ -36,7 +41,12 @@ const ProducRequesttList = () => {
 
   if (allrequest && allrequest.length == 0 && !isDialogOpen) {
     return (
-      <Layout>
+      <Layout
+        title="Product Request"
+        description="KIITMart's request page displays existing product requests and allows users to submit new requests. Customers can view a list of current requests including product names and quantities. The 'Add New Request' feature enables users to easily input desired products and quantities, facilitating product sourcing and availability on the platform."
+        keywords="KIITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list"
+        author="Abhishek Kumar"
+      >
         <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
           <div className="bg-white shadow-md rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">No request yet</h2>
@@ -54,7 +64,12 @@ const ProducRequesttList = () => {
     )
   }
   return (
-    <Layout>
+    <Layout
+      title="Product Request"
+      description="KIITMart's request page displays existing product requests and allows users to submit new requests. Customers can view a list of current requests including product names and quantities. The 'Add New Request' feature enables users to easily input desired products and quantities, facilitating product sourcing and availability on the platform."
+      keywords="KIITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list"
+      author="Abhishek Kumar"
+    >
       <div className="w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="flex justify-between items-center p-4 sm:p-6 border-b">

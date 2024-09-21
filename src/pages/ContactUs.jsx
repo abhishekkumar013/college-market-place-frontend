@@ -44,7 +44,12 @@ const ContactUs = () => {
   }
 
   return (
-    <Layout title="home" description="" keywords="" author="">
+    <Layout
+      title="Contact Us"
+      description="The Contact Us page of KIITMart offers users a way to connect via Instagram and provides a feedback form. Users can rate their experience and suggest improvements. The page features a clean design with a rating system and a message box for detailed feedback."
+      keywords="KIITMart, Contact Us, Instagram, feedback form, rate us, suggest improvements, customer support, social media, user experience, contact channels"
+      author="Abhishek Kumar"
+    >
       <div className="flex flex-col items-center justify-center mt-20 2xl:mt-32 p-4 space-y-8">
         <div className="w-full max-w-md sm:max-w-lg md:max-w-2xl bg-white p-6 md:p-8 ">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">

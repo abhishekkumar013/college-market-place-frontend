@@ -63,7 +63,12 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <Layout title="home" description="" keywords="" author="">
+      <Layout
+        Title="Cart - KIITMart | Explore products from Multiple Sellers, Easy Ordering"
+        Description="Browse a variety of product from trusted sellers on KIITMart. View detailed product listings with images, pricing , and seller information. Order effortlessly via WhatsApp or clear your entire cart. Utilize the search bar to find the perfect headphones and enjoy a seamless shopping experience on KIITMart."
+        Keywords="KIITMart cart,  online shopping, multiple sellers, WhatsApp ordering, ecommerce cart, product search, clear cart option, India"
+        author="Abhishek kumar"
+      >
         <div className="container mx-auto p-4 text-center ">
           <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
           <p className="text-4xl md:text-9xl text-gray-400">
@@ -109,7 +114,12 @@ const Cart = () => {
   }
 
   return (
-    <Layout title="home" description="" keywords="" author="">
+    <Layout
+      Title="Cart - KIITMart | Explore products from Multiple Sellers, Easy Ordering"
+      Description="Browse a variety of product from trusted sellers on KIITMart. View detailed product listings with images, pricing , and seller information. Order effortlessly via WhatsApp or clear your entire cart. Utilize the search bar to find the perfect headphones and enjoy a seamless shopping experience on KIITMart."
+      Keywords="KIITMart cart,  online shopping, multiple sellers, WhatsApp ordering, ecommerce cart, product search, clear cart option, India"
+      author="Abhishek kumar"
+    >
       <div className="container mx-auto p-4">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-bold">Products</h1>

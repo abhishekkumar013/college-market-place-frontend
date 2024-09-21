@@ -24,7 +24,12 @@ const About = () => {
   ]
 
   return (
-    <Layout title="home" description="" keywords="" author="">
+    <Layout
+      title="About Us"
+      description="The About Us page of KIITMart showcases two team members: Abhishek Kumar, a Full Stack Web & Mobile Developer, and Abhishek Tiwari, a Front-end Developer UI/UX Designer. The page displays their profile pictures, roles, and links to their LinkedIn and Instagram profiles."
+      keywords="KIITMart, About Us, team members, developers, Abhishek Kumar, Abhishek Tiwari, Full Stack Developer, Front-end Developer, UI/UX Designer, LinkedIn, Instagram"
+      author="Abhishek kumar"
+    >
       <div className="flex flex-wrap h-[500px] 2xl:h-[700px] items-center justify-center gap-20 p-8">
         {developers.map((dev, index) => (
           <DeveloperCard key={index} {...dev} />

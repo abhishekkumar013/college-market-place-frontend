@@ -63,7 +63,12 @@ const Home = () => {
   }, [])
 
   return (
-    <Layout title="home" description="" keywords="" author="">
+    <Layout
+      title="home"
+      description="The home page of KIIT Mart offers a user-friendly interface designed to help college students discover and purchase products conveniently. The page prominently features 'Popular Categories' such as Electronics, Clothing & Accessories, Study Materials, Sports & Fitness and Food & Beverages, each represented by visually appealing icons to guide users through different product types. Below, a 'Newly Added' section highlights the latest products with real-time discounts, showcasing items like cameras, shoes, portable speakers, umbrellas, and more. The top navigation menu provides quick access to key sections such as Buy, Product Listing, Request, Orders, Payment, and History, enhancing the browsing experience. A search bar at the top allows users to find specific products, with an option to filter by categories. The footer includes essential information like copyrights and user-friendly links for further inquiries."
+      keywords="KIIT Mart, home page, student marketplace, popular categories, laptops, mobiles, cables, headphones, study materials, newly added products, discounts, Canon camera, Campus shoes, JBL Go 3, umbrella, cable protectors, online shopping, search bar, product listing, easy navigation"
+      author="Abhishek Kumar"
+    >
       {/* Product Carousel */}
       <div className="mb-1 block md:hidden">
         <ProductCarousel products={latestProducts.slice(0, 8)} />

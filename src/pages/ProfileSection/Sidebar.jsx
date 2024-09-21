@@ -30,7 +30,12 @@ const Sidebar = () => {
     }
   }, [])
   return (
-    <Layout title="home" description="" keywords="" author="">
+    <Layout
+      title="Account Details"
+      description="The My Profile page of KIITMart displays user account details including name, email, WhatsApp number, and hostel. It features a sidebar menu with options like Account Details, Your Request, Your Sale, Your Product, Review's Order, My Orders, and Help. Users can update their profile information, particularly their hostel details."
+      keywords="KIITMart,kiitmart,kIITMart,kiitMart,Kiitmart, user profile, account details, personal information, student account, hostel selecton, profile update, sidebar menu, ecommerce account, KIIT University"
+      author="Abhishek Kumar"
+    >
       <div className="flex  flex-col md:flex-row  h-screen 2xl:m-10">
         <div className="w-full md:w-2/6 lg:w-2/6 2xl:w-2/6">
           <UserProfile />
