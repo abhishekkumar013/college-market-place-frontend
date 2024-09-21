@@ -38,7 +38,12 @@ const Product = () => {
 
   if (loading) {
     return (
-      <Layout>
+      <Layout
+        title="Products"
+        description=""
+        keywords=""
+        author="Abhishek Kumar"
+      >
         <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
           <div className="p-8 text-center">
             <Loader />
@@ -50,7 +55,12 @@ const Product = () => {
 
   if (products.length === 0) {
     return (
-      <Layout>
+      <Layout
+        title="Products"
+        description=""
+        keywords=""
+        author="Abhishek Kumar"
+      >
         <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
           <div className="bg-white shadow-md rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">No Products Found</h2>
