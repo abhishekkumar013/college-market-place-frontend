@@ -25,7 +25,7 @@ const ProducRequesttList = () => {
   if (loading && allrequest.length == 0 && !isDialogOpen) {
     return (
       <Layout
-        title="Product Request"
+        title="Product-Request"
         description="KIITMart's request page displays existing product requests and allows users to submit new requests. Customers can view a list of current requests including product names and quantities. The 'Add New Request' feature enables users to easily input desired products and quantities, facilitating product sourcing and availability on the platform."
         keywords="KIITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list"
         author="Abhishek Kumar"
@@ -42,7 +42,7 @@ const ProducRequesttList = () => {
   if (allrequest && allrequest.length == 0 && !isDialogOpen) {
     return (
       <Layout
-        title="Product Request"
+        title="Product-Request"
         description="KIITMart's request page displays existing product requests and allows users to submit new requests. Customers can view a list of current requests including product names and quantities. The 'Add New Request' feature enables users to easily input desired products and quantities, facilitating product sourcing and availability on the platform."
         keywords="KIITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list"
         author="Abhishek Kumar"
@@ -65,7 +65,7 @@ const ProducRequesttList = () => {
   }
   return (
     <Layout
-      title="Product Request"
+      title="Product-Request"
       description="KIITMart's request page displays existing product requests and allows users to submit new requests. Customers can view a list of current requests including product names and quantities. The 'Add New Request' feature enables users to easily input desired products and quantities, facilitating product sourcing and availability on the platform."
       keywords="KIITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list"
       author="Abhishek Kumar"

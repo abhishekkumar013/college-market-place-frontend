@@ -101,7 +101,7 @@ const AddProduct = () => {
   if (!user.phone || user.hostel === 'None') {
     return (
       <Layout
-        title="Product Listing"
+        title="Product-Listing"
         description="KIITMart's product listing page allows sellers to add new products to the marketplace. Users can input product details including name, description, category, quantity, price, discounts, and upload product images. This comprehensive form enables sellers to accurately showcase their items on the KIITMart platform."
         keywords="KIITMart, add product, product listing, e-commerce, seller tools, online marketplace, product details, pricing, inventory management, product categories, product images"
         author="Abhishek Kumar"
