@@ -109,7 +109,7 @@ const Header = () => {
             ? 'h-40 lg:h-40'
             : user && !user.phone
             ? 'h-32 lg:h-40'
-            : 'h-16 lg:h-28'
+            : 'h-[90px] lg:h-28'
         }`}
       ></div>
     </>
