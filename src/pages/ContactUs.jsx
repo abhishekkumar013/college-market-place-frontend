@@ -33,6 +33,7 @@ const ContactUs = () => {
         },
         { withCredentials: true },
       )
+      localStorage.setItem('phoneUpdateNotificationDismissed', 'true')
       toast.success(data.message)
     } catch (error) {
       const msg = error.response?.data?.message || 'Try to submit agian'

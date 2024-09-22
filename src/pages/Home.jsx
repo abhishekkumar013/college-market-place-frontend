@@ -98,11 +98,29 @@ const Home = () => {
           {/* Newly Added Products Section */}
           <div className="mt-8 pb-16 md:pb-0">
             <h2 className="text-2xl text-center font-bold mb-4">Newly Added</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              {latestProducts.map((product, index) => (
-                <NewlyAddedCard key={index} product={product} />
-              ))}
-            </div>
+            {latestProducts && latestProducts.length === 0 ? (
+              <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
+                <div className="bg-white shadow-md rounded-lg p-8 text-center">
+                  <h2 className="text-2xl font-bold mb-4">No Products Found</h2>
+
+                  <p className="text-gray-500 mb-4">
+                    It seems like you haven't made any requests yet. Start
+                    exploring our product listings and make your first request
+                    to see your request history here.
+                  </p>
+
+                  <p className="mt-4 text-green-500 hover:underline">
+                    <Link to="/product-listing">Add Your Product</Link>
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {latestProducts.map((product, index) => (
+                  <NewlyAddedCard key={index} product={product} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
