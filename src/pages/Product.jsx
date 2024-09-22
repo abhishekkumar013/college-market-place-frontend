@@ -66,9 +66,9 @@ const Product = () => {
             <h2 className="text-2xl font-bold mb-4">No Products Found</h2>
 
             <p className="text-gray-500 mb-4">
-              It seems like you haven't made any requests yet. Start exploring
-              our product listings and make your first request to see your
-              request history here.
+              It looks like you haven't added any products yet. Start browsing
+              our product listings and add your first item to see it appear here
+              in your cart!
             </p>
 
             <p className="mt-4 text-green-500 hover:underline">
