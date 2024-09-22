@@ -33,6 +33,7 @@ const categories = [
 
 const ProductCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [direction, setDirection] = useState(1)
   const displayCount = 1
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
@@ -41,13 +42,21 @@ const ProductCarousel = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === categories.length - displayCount ? 0 : prevIndex + 1,
-      )
+      setCurrentIndex((prevIndex) => {
+        if (prevIndex === categories.length - displayCount && direction === 1) {
+          setDirection(-1)
+          return prevIndex - 1
+        } else if (prevIndex === 0 && direction === -1) {
+          setDirection(1)
+          return prevIndex + 1
+        } else {
+          return prevIndex + direction
+        }
+      })
     }, 2000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [direction])
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX
@@ -59,24 +68,36 @@ const ProductCarousel = () => {
 
   const handleTouchEnd = () => {
     if (touchStartX.current - touchEndX.current > 50) {
-      // Swipe left
+      //  left
       nextSlide()
     } else if (touchEndX.current - touchStartX.current > 50) {
-      // Swipe right
+      //  right
       prevSlide()
     }
   }
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === categories.length - displayCount ? 0 : prevIndex + 1,
-    )
+    setCurrentIndex((prevIndex) => {
+      if (prevIndex === categories.length - displayCount) {
+        setDirection(-1)
+        return prevIndex - 1
+      } else {
+        setDirection(1)
+        return prevIndex + 1
+      }
+    })
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? categories.length - displayCount : prevIndex - 1,
-    )
+    setCurrentIndex((prevIndex) => {
+      if (prevIndex === 0) {
+        setDirection(1)
+        return prevIndex + 1
+      } else {
+        setDirection(-1)
+        return prevIndex - 1
+      }
+    })
   }
 
   const handleCategoryClick = (categoryId) => {
