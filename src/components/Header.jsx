@@ -104,7 +104,13 @@ const Header = () => {
       </header>
       {/* Spacer to prevent content from being hidden under the fixed header */}
       <div
-        className={`${user && !user.phone ? 'h-32 lg:h-40' : 'h-20 lg:h-28'}`}
+        className={`${
+          !hasBeenDismissed
+            ? 'h-40 lg:h-40'
+            : user && !user.phone
+            ? 'h-32 lg:h-40'
+            : 'h-20 lg:h-28'
+        }`}
       ></div>
     </>
   )
