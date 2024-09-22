@@ -6,6 +6,7 @@ import { checkLoginStatus } from '../store/slices/authSlice'
 import { getAllLatestProducts } from '../store/slices/productSlice'
 import Layout from '../components/Layout/Layout'
 import ProductCarousel from '../components/Crosual/ProductCrosual'
+import { Link } from 'react-router-dom'
 
 const categories = [
   {
