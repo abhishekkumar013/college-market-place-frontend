@@ -9,29 +9,29 @@ import ProductCarousel from '../components/Crosual/ProductCrosual'
 
 const categories = [
   {
-    id: '66dc007e1c41cc1541a3c1f8',
-    title: 'Laptops',
-    image: '/images/laptop.png',
+    id: '66ed051ccd9e701d47729e7e',
+    title: 'Clothing & Accessories',
+    image: '/images/Clothing_Accessories.png',
   },
   {
-    id: '66dc007e1c41cc1541a3c1f9',
-    title: 'Mobiles',
-    image: '/images/mobile.png',
+    id: '66ed0537cd9e701d47729e87',
+    title: 'Electronics',
+    image: '/images/Electronics.png',
   },
   {
-    id: '66dc007e1c41cc1541a3c1f7',
-    title: 'Charger',
-    image: '/images/Charger.png',
-  },
-  {
-    id: '66dc007e1c41cc1541a3c1f6',
-    title: 'Headphones',
-    image: '/images/headphone5.jpg',
-  },
-  {
-    id: '66dc007e1c41cc1541a3c1f5',
+    id: '66ed0686cd9e701d47729ee2',
     title: 'Study Materials',
-    image: '/images/speaker.png',
+    image: '/images/Study_Materials.png',
+  },
+  {
+    id: '66ed0677cd9e701d47729edc',
+    title: 'Sports & Fitness',
+    image: '/images/Sports_Fitness.png',
+  },
+  {
+    id: '66ed056bcd9e701d47729e93',
+    title: 'Food & Beverages',
+    image: '/images/Food_Beverages.png',
   },
 ]
 
@@ -65,8 +65,8 @@ const Home = () => {
   return (
     <Layout
       title="home"
-      description="The home page of KIIT Mart offers a user-friendly interface designed to help college students discover and purchase products conveniently. The page prominently features 'Popular Categories' such as Electronics, Clothing & Accessories, Study Materials, Sports & Fitness and Food & Beverages, each represented by visually appealing icons to guide users through different product types. Below, a 'Newly Added' section highlights the latest products with real-time discounts, showcasing items like cameras, shoes, portable speakers, umbrellas, and more. The top navigation menu provides quick access to key sections such as Buy, Product Listing, Request, Orders, Payment, and History, enhancing the browsing experience. A search bar at the top allows users to find specific products, with an option to filter by categories. The footer includes essential information like copyrights and user-friendly links for further inquiries."
-      keywords="KIIT Mart, home page, student marketplace, popular categories, laptops, mobiles, cables, headphones, study materials, newly added products, discounts, Canon camera, Campus shoes, JBL Go 3, umbrella, cable protectors, online shopping, search bar, product listing, easy navigation"
+      description="The home page of KIIT Mart offers a user-friendly interface designed to help college students discover and purchase products conveniently. The page prominently features 'Popular Categories' such as Electronics, Clothing & Accessories, Study Materials, Sports & Fitness and Food & Beverages, each represented by visually appealing icons to guide users through different product types. Below, a 'Newly Added' section highlights the latest products with real-time discounts, showcasing items . The top navigation menu provides quick access to key sections such as Buy, Product Listing, Request, Orders, Payment, and History, enhancing the browsing experience. A search bar at the top allows users to find specific products, with an option to filter by categories. The footer includes essential information like copyrights and user-friendly links for further inquiries."
+      keywords="KIIT Mart, KIITMart, Kiitmart, kiITMart, KiITMart, KIITMART, kiitMart, kiitmart, KIITmart, kiITMART, KiitMart, kIItMart, kIITMart, kIitMART, kIITmart, KiiTmart, KiiTMART, kIitMART, kIItMART, kIITMART, kIiTmart, KIiTmart, KIiTMart, kIiTMart, marketplace, student shop, campus store, online shopping, quick buy, study materials, clothing, electronics, discounts, fitness, accessories, food, beverages, search bar, product list, buy, request."
       author="Abhishek Kumar"
     >
       {/* Product Carousel */}

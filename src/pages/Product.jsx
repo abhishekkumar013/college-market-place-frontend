@@ -39,9 +39,9 @@ const Product = () => {
   if (loading) {
     return (
       <Layout
-        title="Products"
-        description=""
-        keywords=""
+        title="product"
+        description="The Product page on KIIT Mart offers users a comprehensive view of search results based on their queries. It displays a range of product options, showcasing details such as price, discounts, and product images. Users can easily add items to their cart or proceed directly to purchase with the 'Buy Now' option. The page includes a search bar, sorting options, and filters to help refine search results, making it easy to navigate and find the best deals. The layout is clean, with a focus on user experience and convenience."
+        keywords="KIIT Mart, KIITMart, Kiitmart, kiITMart, KiitMart, KIITMART, kiitMART, kiitmart, product page, student marketplace, product search, add to cart, buy now, discounts, online shopping, filter options, sort options, product listing, campus marketplace, search bar, quick buy, Bicycles & Accessories, Clothing & Accessories, College Merchandise, Daily Essentials, Electronics, Exam Prep Tools, Extracurriculars & Hobbies, Events & Club Gear, Food & Beverages, Furniture, Gaming Gear, Gadgets, Health & Wellness, Hostel Supplies, Internship/Placement Essentials, Laptop & Mobile Repairs, Meal Plans & Cooking Essentials, Miscellaneous, Online Courses & Skill-building, Party Supplies, Photography & Videography Gear, Project Supplies, Room Décor, Second-hand Clothing, Second-hand Items, Sports & Fitness, Stationery, Study Materials, Tech & Accessories."
         author="Abhishek Kumar"
       >
         <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
@@ -56,9 +56,9 @@ const Product = () => {
   if (products.length === 0) {
     return (
       <Layout
-        title="Products"
-        description=""
-        keywords=""
+        title="product"
+        description="The Product page on KIIT Mart offers users a comprehensive view of search results based on their queries. It displays a range of product options, showcasing details such as price, discounts, and product images. Users can easily add items to their cart or proceed directly to purchase with the 'Buy Now' option. The page includes a search bar, sorting options, and filters to help refine search results, making it easy to navigate and find the best deals. The layout is clean, with a focus on user experience and convenience."
+        keywords="KIIT Mart, KIITMart, Kiitmart, kiITMart, KiitMart, KIITMART, kiitMART, kiitmart, product page, student marketplace, product search, add to cart, buy now, discounts, online shopping, filter options, sort options, product listing, campus marketplace, search bar, quick buy, Bicycles & Accessories, Clothing & Accessories, College Merchandise, Daily Essentials, Electronics, Exam Prep Tools, Extracurriculars & Hobbies, Events & Club Gear, Food & Beverages, Furniture, Gaming Gear, Gadgets, Health & Wellness, Hostel Supplies, Internship/Placement Essentials, Laptop & Mobile Repairs, Meal Plans & Cooking Essentials, Miscellaneous, Online Courses & Skill-building, Party Supplies, Photography & Videography Gear, Project Supplies, Room Décor, Second-hand Clothing, Second-hand Items, Sports & Fitness, Stationery, Study Materials, Tech & Accessories."
         author="Abhishek Kumar"
       >
         <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
@@ -115,7 +115,12 @@ const Product = () => {
   }
 
   return (
-    <Layout title="Products" description="" keywords="" author="Abhishek Kumar">
+    <Layout
+      title="product"
+      description="The Product page on KIIT Mart offers users a comprehensive view of search results based on their queries. It displays a range of product options, showcasing details such as price, discounts, and product images. Users can easily add items to their cart or proceed directly to purchase with the 'Buy Now' option. The page includes a search bar, sorting options, and filters to help refine search results, making it easy to navigate and find the best deals. The layout is clean, with a focus on user experience and convenience."
+      keywords="KIIT Mart, KIITMart, Kiitmart, kiITMart, KiitMart, KIITMART, kiitMART, kiitmart, product page, student marketplace, product search, add to cart, buy now, discounts, online shopping, filter options, sort options, product listing, campus marketplace, search bar, quick buy, Bicycles & Accessories, Clothing & Accessories, College Merchandise, Daily Essentials, Electronics, Exam Prep Tools, Extracurriculars & Hobbies, Events & Club Gear, Food & Beverages, Furniture, Gaming Gear, Gadgets, Health & Wellness, Hostel Supplies, Internship/Placement Essentials, Laptop & Mobile Repairs, Meal Plans & Cooking Essentials, Miscellaneous, Online Courses & Skill-building, Party Supplies, Photography & Videography Gear, Project Supplies, Room Décor, Second-hand Clothing, Second-hand Items, Sports & Fitness, Stationery, Study Materials, Tech & Accessories."
+      author="Abhishek Kumar"
+    >
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
           <h1 className="text-2xl font-bold mb-4 sm:mb-0">

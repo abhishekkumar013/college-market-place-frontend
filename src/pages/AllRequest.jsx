@@ -25,9 +25,9 @@ const ProducRequesttList = () => {
   if (loading && allrequest.length == 0 && !isDialogOpen) {
     return (
       <Layout
-        title="Product-Request"
+        title="Product Request"
         description="KIITMart's request page displays existing product requests and allows users to submit new requests. Customers can view a list of current requests including product names and quantities. The 'Add New Request' feature enables users to easily input desired products and quantities, facilitating product sourcing and availability on the platform."
-        keywords="KIITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list"
+        keywords="KIITMart, Kiitmart, kiITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list, add request, request form, product wishlist, user requests, item requests, product needs, request platform, request page, new request, request submission, product sourcing, item sourcing, request list, customer input, desired products, request marketplace, submit request, product demand, request management, request tools."
         author="Abhishek Kumar"
       >
         <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
@@ -42,9 +42,9 @@ const ProducRequesttList = () => {
   if (allrequest && allrequest.length == 0 && !isDialogOpen) {
     return (
       <Layout
-        title="Product-Request"
+        title="Product Request"
         description="KIITMart's request page displays existing product requests and allows users to submit new requests. Customers can view a list of current requests including product names and quantities. The 'Add New Request' feature enables users to easily input desired products and quantities, facilitating product sourcing and availability on the platform."
-        keywords="KIITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list"
+        keywords="KIITMart, Kiitmart, kiITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list, add request, request form, product wishlist, user requests, item requests, product needs, request platform, request page, new request, request submission, product sourcing, item sourcing, request list, customer input, desired products, request marketplace, submit request, product demand, request management, request tools."
         author="Abhishek Kumar"
       >
         <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
@@ -65,9 +65,9 @@ const ProducRequesttList = () => {
   }
   return (
     <Layout
-      title="Product-Request"
+      title="Product Request"
       description="KIITMart's request page displays existing product requests and allows users to submit new requests. Customers can view a list of current requests including product names and quantities. The 'Add New Request' feature enables users to easily input desired products and quantities, facilitating product sourcing and availability on the platform."
-      keywords="KIITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list"
+      keywords="KIITMart, Kiitmart, kiITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list, add request, request form, product wishlist, user requests, item requests, product needs, request platform, request page, new request, request submission, product sourcing, item sourcing, request list, customer input, desired products, request marketplace, submit request, product demand, request management, request tools."
       author="Abhishek Kumar"
     >
       <div className="w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">

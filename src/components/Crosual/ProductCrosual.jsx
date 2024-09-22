@@ -6,28 +6,28 @@ import { SearchProducts } from '../../store/slices/productSlice'
 const categories = [
   {
     id: '66dc007e1c41cc1541a3c1f8',
-    title: 'Laptops',
-    image: '/images/laptop.png',
+    title: 'Clothing & Accessories',
+    image: '/images/Clothing_Accessories.png',
   },
   {
     id: '66dc007e1c41cc1541a3c1f9',
-    title: 'Mobiles',
-    image: '/images/mobile.png',
+    title: 'Electronics',
+    image: '/images/Electronics.png',
   },
   {
     id: '66dc007e1c41cc1541a3c1f7',
-    title: 'Charger',
-    image: '/images/Charger.png',
+    title: 'Study Materials',
+    image: '/images/Study_Materials.png',
   },
   {
     id: '66dc007e1c41cc1541a3c1f6',
-    title: 'Headphones',
-    image: '/images/headphone5.jpg',
+    title: 'Sports & Fitness',
+    image: '/images/Sports_Fitness.png',
   },
   {
     id: '66dc007e1c41cc1541a3c1f5',
-    title: 'Study Materials',
-    image: '/images/speaker.png',
+    title: 'Food & Beverages',
+    image: '/images/Food_Beverages.png',
   },
 ]
 

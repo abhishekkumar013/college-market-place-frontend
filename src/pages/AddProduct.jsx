@@ -101,9 +101,9 @@ const AddProduct = () => {
   if (!user.phone || user.hostel === 'None') {
     return (
       <Layout
-        title="Product-Listing"
+        title="Product Listing"
         description="KIITMart's product listing page allows sellers to add new products to the marketplace. Users can input product details including name, description, category, quantity, price, discounts, and upload product images. This comprehensive form enables sellers to accurately showcase their items on the KIITMart platform."
-        keywords="KIITMart, add product, product listing, e-commerce, seller tools, online marketplace, product details, pricing, inventory management, product categories, product images"
+        keywords="KIITMart, Kiitmart, kiITMart, product listing, add product, product upload, sell online, marketplace listing, seller tools, seller portal, price input, product form, item description, product management, seller dashboard, new listing, inventory input, upload images, quantity input, add listing, seller account, listing details, product showcase, price management, discount input, category input, item details, product data, upload products, seller platform, product info, online seller, add item"
         author="Abhishek Kumar"
       >
         <div className="container mx-auto p-4 text-center mt-10 ">
@@ -119,7 +119,12 @@ const AddProduct = () => {
   }
 
   return (
-    <Layout title="Product-Listing" description="" keywords="" author="">
+    <Layout
+      title="Product Listing"
+      description="KIITMart's product listing page allows sellers to add new products to the marketplace. Users can input product details including name, description, category, quantity, price, discounts, and upload product images. This comprehensive form enables sellers to accurately showcase their items on the KIITMart platform."
+      keywords="KIITMart, Kiitmart, kiITMart, product listing, add product, product upload, sell online, marketplace listing, seller tools, seller portal, price input, product form, item description, product management, seller dashboard, new listing, inventory input, upload images, quantity input, add listing, seller account, listing details, product showcase, price management, discount input, category input, item details, product data, upload products, seller platform, product info, online seller, add item"
+      author="Abhishek Kumar"
+    >
       <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md mt-4">
         <h1 className="text-2xl font-bold mb-6">Add Your Product</h1>
 

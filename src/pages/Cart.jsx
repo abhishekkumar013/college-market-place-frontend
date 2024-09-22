@@ -51,7 +51,12 @@ const Cart = () => {
 
   if (loading && cart.length === 0) {
     return (
-      <Layout title="kiitmart-cart" description="" keywords="" author="">
+      <Layout
+        title="Cart"
+        description="The cart page of KIITMart displays selected items from various sellers. Each item shows product image, name, seller, quantity, and price. Users can order directly via WhatsApp or clear the entire cart. The page features a search bar for products and navigation menu options."
+        keywords="KIITMart, Kiitmart, kiITMart, KIITMART, kiitMART, kiitmart, shopping cart, online shopping, ecommerce, WhatsApp ordering, product listing, multiple sellers, clear cart, product search, headphone search, cart management, order now, user-friendly, seller options, item quantity, price display, search bar, shopping experience, product details, direct order, convenience."
+        author="Abhishek Kumar"
+      >
         <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
           <div className=" p-8 text-center">
             <Loader />
@@ -64,10 +69,10 @@ const Cart = () => {
   if (cart.length === 0) {
     return (
       <Layout
-        Title="kiitmart-cart"
-        Description="Browse a variety of product from trusted sellers on KIITMart. View detailed product listings with images, pricing , and seller information. Order effortlessly via WhatsApp or clear your entire cart. Utilize the search bar to find the perfect headphones and enjoy a seamless shopping experience on KIITMart."
-        Keywords="KIITMart cart,  online shopping, multiple sellers, WhatsApp ordering, ecommerce cart, product search, clear cart option, India"
-        author="Abhishek kumar"
+        title="Cart"
+        description="The cart page of KIITMart displays selected items from various sellers. Each item shows product image, name, seller, quantity, and price. Users can order directly via WhatsApp or clear the entire cart. The page features a search bar for products and navigation menu options."
+        keywords="KIITMart, Kiitmart, kiITMart, KIITMART, kiitMART, kiitmart, shopping cart, online shopping, ecommerce, WhatsApp ordering, product listing, multiple sellers, clear cart, product search, headphone search, cart management, order now, user-friendly, seller options, item quantity, price display, search bar, shopping experience, product details, direct order, convenience."
+        author="Abhishek Kumar"
       >
         <div className="container mx-auto p-4 text-center ">
           <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
@@ -115,10 +120,10 @@ const Cart = () => {
 
   return (
     <Layout
-      Title="kiitmart-cart"
-      Description="Browse a variety of product from trusted sellers on KIITMart. View detailed product listings with images, pricing , and seller information. Order effortlessly via WhatsApp or clear your entire cart. Utilize the search bar to find the perfect headphones and enjoy a seamless shopping experience on KIITMart."
-      Keywords="KIITMart cart,  online shopping, multiple sellers, WhatsApp ordering, ecommerce cart, product search, clear cart option, India"
-      author="Abhishek kumar"
+      title="Cart"
+      description="The cart page of KIITMart displays selected items from various sellers. Each item shows product image, name, seller, quantity, and price. Users can order directly via WhatsApp or clear the entire cart. The page features a search bar for products and navigation menu options."
+      keywords="KIITMart, Kiitmart, kiITMart, KIITMART, kiitMART, kiitmart, shopping cart, online shopping, ecommerce, WhatsApp ordering, product listing, multiple sellers, clear cart, product search, headphone search, cart management, order now, user-friendly, seller options, item quantity, price display, search bar, shopping experience, product details, direct order, convenience."
+      author="Abhishek Kumar"
     >
       <div className="container mx-auto p-4">
         <div className="flex justify-between items-center mb-4">
