@@ -71,6 +71,9 @@ const Home = () => {
     >
       {/* Product Carousel */}
       <div className="mb-1 block md:hidden">
+        <h2 className="text-2xl text-center font-bold mb-1">
+          Popular Categories
+        </h2>
         <ProductCarousel products={latestProducts.slice(0, 8)} />
       </div>
 
