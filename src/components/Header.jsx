@@ -24,6 +24,7 @@ const Header = () => {
   return (
     <>
       <header className="font-sans fixed top-0 left-0 right-0 z-50">
+        {!hasBeenDismissed && <FeedBackNotification />}
         <div className="bg-gray-100 py-3 px-4 shadow-md">
           <div className="container mx-auto">
             <div className="flex items-center justify-between">
@@ -94,11 +95,7 @@ const Header = () => {
         )}
 
         {/* Phone Update Notification */}
-        {user && !user?.phone ? (
-          <PhoneUpdateNotification />
-        ) : (
-          <FeedBackNotification />
-        )}
+        {user && !user?.phone && <PhoneUpdateNotification />}
 
         {/* Navigation - hidden on mobile */}
         <div className="hidden lg:block">
@@ -107,11 +104,7 @@ const Header = () => {
       </header>
       {/* Spacer to prevent content from being hidden under the fixed header */}
       <div
-        className={`${
-          user && (!hasBeenDismissed || !user.phone)
-            ? 'h-32 lg:h-40'
-            : 'h-20 lg:h-28'
-        }`}
+        className={`${user && !user.phone ? 'h-32 lg:h-40' : 'h-20 lg:h-28'}`}
       ></div>
     </>
   )
