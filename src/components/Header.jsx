@@ -77,8 +77,8 @@ const Header = () => {
 
         {/* Mobile search bar */}
         {openMenu === 'search' && (
-          <div className="lg:hidden bg-white border-t border-gray-200">
-            <div className="container mx-auto px-4 py-2">
+          <div className="lg:hidden bg-white border-t border-gray-200 border-b shadow-md">
+            <div className="container mx-auto px-4 py-3">
               <SearchBar />
             </div>
           </div>
@@ -86,7 +86,7 @@ const Header = () => {
 
         {/* Mobile menu */}
         {openMenu === 'menu' && (
-          <div className="lg:hidden bg-white border-t border-gray-200">
+          <div className="lg:hidden bg-white border-t border-gray-200 border-b  shadow-md">
             <div className="container mx-auto px-4 py-2">
               <UserActions />
               <MobileUserActions />
