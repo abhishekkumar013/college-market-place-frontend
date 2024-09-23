@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { FcGoogle } from 'react-icons/fc'
 import { gsap } from 'gsap'
+import { loginSuccess } from '../../store/slices/authSlice'
 
 const MobileLoginStyle = () => {
   const navigate = useNavigate()
@@ -10,16 +11,15 @@ const MobileLoginStyle = () => {
   const dispatch = useDispatch()
   const [errorMessage, setErrorMessage] = useState(null)
   const [showLogin, setShowLogin] = useState(false)
+  const [isTermsOpen, setIsTermsOpen] = useState(false)
   const charactersRef = useRef([])
 
   useEffect(() => {
     const characters = charactersRef.current
     const tl = gsap.timeline({ onComplete: () => setShowLogin(true) })
 
-    // Ensure all characters start invisible
     gsap.set(characters, { opacity: 0, y: 50 })
 
-    // Animate each character
     characters.forEach((char, index) => {
       tl.to(
         char,
@@ -30,13 +30,11 @@ const MobileLoginStyle = () => {
           ease: 'back.out(1.7)',
         },
         index * 0.1,
-      ) // Stagger the start time
+      )
     })
 
-    // Hold for a moment
     tl.to({}, { duration: 0.5 })
 
-    // Fade out all characters
     tl.to(characters, {
       opacity: 0,
       y: -50,
@@ -56,7 +54,7 @@ const MobileLoginStyle = () => {
     if (token) {
       dispatch(loginSuccess({ token: token, user: null }))
     }
-  }, [location])
+  }, [location, dispatch])
 
   const handleLogin = () => {
     setErrorMessage(null)
@@ -66,6 +64,19 @@ const MobileLoginStyle = () => {
         : import.meta.env.VITE_API_LOGIN_LOCAL
     window.open(url, '_self')
   }
+
+  const termsAndConditions = [
+    "Welcome to KIIT Mart! By diving into our marketplace, you're agreeing to play by our rules.",
+    'Your info matters! We use your contact details to connect with you and ensure smooth communication with other students.',
+    "Let's keep it safe! Alcohol, weapons, and other forbidden items are a no-go here.",
+    'Sellers, step up! Make sure your product listings are spot-on; your reputation is on the line.',
+    'Transactions made easy! Remember, all payments happen directly between you and the seller—KIIT Mart is just the bridge!',
+    "Refunds and returns? Those are between you and your seller; we're here to facilitate, not mediate!",
+    'Respect the community! Harassment and fraud have no place in our marketplace.',
+    "Quality alert! While we connect buyers and sellers, we can't guarantee the quality of every product.",
+    "Stay in check! We reserve the right to suspend or terminate accounts that don't follow the rules.",
+    'Open communication! We ensure that all interactions between buyers and sellers remain seamless and secure for a better shopping experience!',
+  ]
 
   if (!showLogin) {
     return (
@@ -120,7 +131,36 @@ const MobileLoginStyle = () => {
           </div>
           Sign in with Google
         </button>
+        <p className="mt-4 text-sm text-gray-600 text-center">
+          By clicking on Login, I accept the{' '}
+          <button
+            className="text-blue-500 hover:underline"
+            onClick={() => setIsTermsOpen(true)}
+          >
+            Terms & Conditions & Privacy Policy
+          </button>
+        </p>
       </div>
+
+      {/* Custom Modal for Terms & Conditions */}
+      {isTermsOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg p-4 w-full max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4">Terms & Conditions</h2>
+            <ul className="list-disc pl-5 space-y-2 text-sm">
+              {termsAndConditions.map((term, index) => (
+                <li key={index}>{term}</li>
+              ))}
+            </ul>
+            <button
+              className="mt-6 w-full bg-green-500 text-white py-2 px-4 rounded-full text-lg font-semibold hover:bg-green-600 transition duration-300"
+              onClick={() => setIsTermsOpen(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

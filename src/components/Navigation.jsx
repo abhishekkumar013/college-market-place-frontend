@@ -8,6 +8,7 @@ const Navigation = () => {
     { id: 2, name: 'Products', url: '/product' },
     { id: 3, name: 'Sell', url: '/product-listing' },
     { id: 4, name: 'Product Request', url: '/all-request' },
+    // { id: 4, name: 'Platform Rules', url: '/rules' },
     // { id: 5, name: 'Restaurants', url: '/restaurants' },
     // { id: 6, name: 'Category', url: '/category' },
   ]

@@ -36,6 +36,7 @@ import Myproducut from './components/products/Myproducut.jsx'
 import { getAllCategory } from './store/slices/categorySlice.js'
 import MyOrder from './components/products/MyOrder.jsx'
 import Restaurants from './pages/Restaurants.jsx'
+import TermsAndConditions from './pages/TermsAndCondition/TermsAndConditions.jsx'
 
 function App() {
   const location = useLocation()
@@ -62,7 +63,10 @@ function App() {
       if (location.pathname === '/login') {
         navigate('/')
       }
-    } else if (location.pathname !== '/login') {
+    } else if (
+      location.pathname !== '/login' &&
+      location.pathname !== '/rules'
+    ) {
       navigate('/login')
     }
   }, [isLogin, location.pathname, navigate])
@@ -91,6 +95,7 @@ function App() {
       <Route path="/orders" element={<OrderHistory />} />
       <Route path="/category" element={<AddCategory />} />
       <Route path="/restaurants" element={<Restaurants />} />
+      <Route path="/rules" element={<TermsAndConditions />} />
       <Route path="/profile" element={<Sidebar />}>
         <Route index element={<Profile />} />
         <Route path="/profile/request" element={<MyRequest />} />
