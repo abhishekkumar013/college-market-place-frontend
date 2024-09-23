@@ -6,8 +6,8 @@ const Navigation = () => {
   const menuObject = [
     { id: 1, name: 'Home', url: '/' },
     { id: 2, name: 'Products', url: '/product' },
-    { id: 3, name: 'Product listing', url: '/product-listing' },
-    { id: 4, name: 'Request', url: '/all-request' },
+    { id: 3, name: 'Sell', url: '/product-listing' },
+    { id: 4, name: 'Product Request', url: '/all-request' },
     // { id: 5, name: 'Restaurants', url: '/restaurants' },
     // { id: 6, name: 'Category', url: '/category' },
   ]

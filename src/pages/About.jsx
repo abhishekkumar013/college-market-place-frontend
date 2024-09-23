@@ -8,7 +8,7 @@ const About = () => {
       name: 'Abhishek Kumar',
       role: 'Full Stack Web & Mobile Developer',
       imageUrl: '/images/abhi.jpg',
-      isHighlighted: false,
+      isHighlighted: true,
       linkdin: 'https://www.linkedin.com/in/abhishek-kumar-a03253262/',
 
       insta: 'https://www.instagram.com/_abhi._.arya/',
@@ -16,7 +16,7 @@ const About = () => {
     {
       name: 'Abhishek Tiwari',
       role: 'Front-end Developer\nUI/UX Designer',
-      imageUrl: '/path/to/abhishek-tiwari-image.jpg',
+      imageUrl: '/images/boka.jpg',
       isHighlighted: false,
       linkdin: '',
       insta: '',

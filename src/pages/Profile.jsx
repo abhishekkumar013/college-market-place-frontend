@@ -209,9 +209,16 @@ const Profile = () => {
               >
                 WhatsApp No:
               </label>
-              <span className="block text-gray-400 text-xs mb-2">
-                T&C: KIITMart uses your phone number to facilitate connections
-                with other users.
+              <span
+                style={{
+                  display: 'block',
+                  color: '#a0aec0',
+                  fontSize: '12px',
+                  marginBottom: '8px',
+                }}
+              >
+                <span style={{ color: 'red' }}>T&C:</span> KIITMart uses your
+                phone number to facilitate connections with other users.
               </span>
               <input
                 id="phone"
