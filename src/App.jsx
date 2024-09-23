@@ -37,7 +37,6 @@ import { getAllCategory } from './store/slices/categorySlice.js'
 import MyOrder from './components/products/MyOrder.jsx'
 import Restaurants from './pages/Restaurants.jsx'
 import TermsAndConditions from './pages/TermsAndCondition/TermsAndConditions.jsx'
-import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   const location = useLocation()
