@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { CgProfile } from 'react-icons/cg'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../store/slices/authSlice'
+import ReactGA from 'react-ga'
 const UserActions = () => {
   const { user } = useSelector((state) => state.auth)
   const { cart } = useSelector((state) => state.product)
@@ -15,6 +16,11 @@ const UserActions = () => {
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen)
 
   const handleLogout = () => {
+    ReactGA.event({
+      category: 'logout',
+      action: 'Clicked logout',
+      label: 'logout Button',
+    })
     dispatch(logoutUser())
     navigate('/login')
   }
