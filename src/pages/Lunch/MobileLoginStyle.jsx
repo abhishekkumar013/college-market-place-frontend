@@ -132,7 +132,7 @@ const MobileLoginStyle = () => {
           Sign in with Google
         </button>
         <p className="mt-4 text-sm text-gray-600 text-center">
-          By clicking on Login, I accept the{' '}
+          By clicking on Sign in, I accept the{' '}
           <button
             className="text-blue-500 hover:underline"
             onClick={() => setIsTermsOpen(true)}
