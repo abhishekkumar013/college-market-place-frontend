@@ -82,6 +82,7 @@ export const logoutUser = () => async (dispatch) => {
     })
 
     dispatch(logoutSuccess())
+
     toast.success('Logged out successfully')
   } catch (error) {
     toast.error('Error logging out')

@@ -16,11 +16,7 @@ const UserActions = () => {
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen)
 
   const handleLogout = () => {
-    ReactGA.event({
-      category: 'logout',
-      action: 'Clicked logout',
-      label: 'logout Button',
-    })
+    
     dispatch(logoutUser())
     navigate('/login')
   }

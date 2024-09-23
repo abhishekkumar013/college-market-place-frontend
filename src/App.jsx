@@ -37,6 +37,7 @@ import { getAllCategory } from './store/slices/categorySlice.js'
 import MyOrder from './components/products/MyOrder.jsx'
 import Restaurants from './pages/Restaurants.jsx'
 import TermsAndConditions from './pages/TermsAndCondition/TermsAndConditions.jsx'
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   const location = useLocation()
@@ -63,10 +64,7 @@ function App() {
       if (location.pathname === '/login') {
         navigate('/')
       }
-    } else if (
-      location.pathname !== '/login' &&
-      location.pathname !== '/rules'
-    ) {
+    } else if (location.pathname !== '/login') {
       navigate('/login')
     }
   }, [isLogin, location.pathname, navigate])
