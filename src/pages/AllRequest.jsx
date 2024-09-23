@@ -47,11 +47,13 @@ const ProducRequesttList = () => {
         keywords="KIITMart, Kiitmart, kiITMart, product request, customer demands, inventory requests, product sourcing, e-commerce, marketplace requests, product availability, customer needs, shopping list, add request, request form, product wishlist, user requests, item requests, product needs, request platform, request page, new request, request submission, product sourcing, item sourcing, request list, customer input, desired products, request marketplace, submit request, product demand, request management, request tools."
         author="Abhishek Kumar"
       >
-        <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
-          <div className="bg-white shadow-md rounded-lg p-8 text-center">
+        <div className="mt-10 md:h-screen md:flex md:justify-center items-center md:-mt-20">
+          <div className="bg-white md:shadow-md rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">No request yet</h2>
 
-            <p className="text-gray-500 mb-4">Back here soon to see request!</p>
+            <p className="text-gray-500 mb-4">
+              can't find what you are looking for ? fir Add new request
+            </p>
             <button
               onClick={() => setIsDialogOpen(true)}
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm sm:text-base"
