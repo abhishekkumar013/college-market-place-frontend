@@ -42,7 +42,7 @@ function App() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { isLogin } = useSelector((state) => state.auth)
-  const TRACKING_ID = process.env.VITE_API_TRACKING_ID
+  const TRACKING_ID = import.meta.env.VITE_API_TRACKING_ID
 
   useEffect(() => {
     ReactGA.initialize(TRACKING_ID)

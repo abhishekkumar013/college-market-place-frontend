@@ -9,6 +9,9 @@ import {
 } from '../store/slices/productSlice'
 import Loader from '../components/Loaders/Loader'
 import Layout from '../components/Layout/Layout'
+import { Link } from 'react-router-dom'
+import { Button } from '@mui/material'
+import { ShoppingBag } from 'lucide-react'
 
 const Cart = () => {
   const { cart, loading } = useSelector((state) => state.product)
@@ -74,11 +77,17 @@ const Cart = () => {
         keywords="KIITMart, Kiitmart, kiITMart, KIITMART, kiitMART, kiitmart, shopping cart, online shopping, ecommerce, WhatsApp ordering, product listing, multiple sellers, clear cart, product search, headphone search, cart management, order now, user-friendly, seller options, item quantity, price display, search bar, shopping experience, product details, direct order, convenience."
         author="Abhishek Kumar"
       >
-        <div className="container mx-auto p-4 text-center ">
+        <div className="container mt-20 mx-auto p-4 text-center">
           <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
-          <p className="text-4xl md:text-9xl text-gray-400">
+          <p className="text-4xl md:text-8xl text-gray-400 mb-8">
             Your cart is empty.
           </p>
+          <Link to="/product">
+            <Button className="flex items-center gap-2">
+              <ShoppingBag size={20} />
+              Browse Products
+            </Button>
+          </Link>
         </div>
       </Layout>
     )
