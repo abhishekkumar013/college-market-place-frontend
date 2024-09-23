@@ -392,7 +392,6 @@ export const getAllReviewOrder = () => {
       const { data } = await axios.get(`${server}/order/get-seller`, {
         withCredentials: true,
       })
-      console.log('Hii ', data)
 
       if (data.data && data.data.length > 0) {
         dispatch(setMyPlacedProduct(data.data))
@@ -532,7 +531,6 @@ export const SearchProducts = (params) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      console.log(data)
 
       if (data.success) {
         dispatch(setSearchResults(data.data))
@@ -564,7 +562,6 @@ export const PlacedOrder = (dataobj) => {
           },
         },
       )
-      console.log(data)
 
       if (!data.success) {
         toast.error(data.message)
@@ -653,7 +650,6 @@ export const updateOrder = (dataobj) => {
         return Promise.reject(data.message)
       }
     } catch (error) {
-      console.log(error.response.data)
       dispatch(
         setError(error.response?.data?.message || 'Failed to update order'),
       )
@@ -671,7 +667,7 @@ export const updateProductImage = (dataobj) => {
     dispatch(setLoading(true))
     dispatch(clearMessage())
     const { token } = getState().auth
-    console.log(dataobj)
+
     try {
       const formData = new FormData()
       formData.append('image', dataobj.image)
@@ -687,7 +683,6 @@ export const updateProductImage = (dataobj) => {
           },
         },
       )
-      console.log('res', data)
 
       if (data.success) {
         toast.success(data.message)
@@ -696,7 +691,6 @@ export const updateProductImage = (dataobj) => {
         toast.error(data.message)
       }
     } catch (error) {
-      console.log(error)
       toast.error(error.response?.data?.message)
       dispatch(
         setError(error.response?.data?.message || 'Failed to update image'),

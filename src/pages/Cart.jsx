@@ -37,7 +37,6 @@ const Cart = () => {
 
   const handlePlaceOrder = () => {
     //  TODO: order place function
-    console.log('Placing order...')
   }
 
   const handleUpdateQuantity = (item, newQuantity) => {

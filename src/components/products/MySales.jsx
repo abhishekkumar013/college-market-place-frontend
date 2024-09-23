@@ -5,7 +5,7 @@ import { getAllMySales } from '../../store/slices/productSlice'
 
 const MySales = () => {
   const { saleout, loading } = useSelector((state) => state.product)
-  console.log('HII ', saleout)
+
   const dispatch = useDispatch()
 
   useEffect(() => {

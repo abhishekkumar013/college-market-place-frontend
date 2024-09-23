@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 
 const initialState = {
   categories: [],
+  message: '',
 }
 
 const categorySlice = createSlice({
@@ -14,9 +15,12 @@ const categorySlice = createSlice({
     addCategory(state, action) {
       state.categories = action.payload
     },
+    seterrormessage(state, action) {
+      state.categories = action.payload
+    },
   },
 })
-export const { addCategory } = categorySlice.actions
+export const { addCategory, seterrormessage } = categorySlice.actions
 
 export default categorySlice.reducer
 
@@ -56,7 +60,7 @@ export const getAllCategory = () => {
 
       dispatch(addCategory(data.data))
     } catch (error) {
-      console.log(error)
+      dispatch(seterrormessage(error?.response?.data?.messag))
     }
   }
 }
