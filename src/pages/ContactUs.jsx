@@ -7,6 +7,7 @@ import Layout from '../components/Layout/Layout'
 import axios from 'axios'
 import { server } from '../main'
 import { toast } from 'react-toastify'
+import ReactGA from 'react-ga'
 
 const ContactUs = () => {
   const [rating, setRating] = useState(1)
@@ -34,6 +35,12 @@ const ContactUs = () => {
         { withCredentials: true },
       )
       localStorage.setItem('phoneUpdateNotificationDismissed', 'true')
+      ReactGA.event({
+        category: 'Contact-us',
+        action: 'submmit form',
+        label: 'Submit form',
+        value: rating,
+      })
       toast.success(data.message)
     } catch (error) {
       const msg = error.response?.data?.message || 'Try to submit agian'

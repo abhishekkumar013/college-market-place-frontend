@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import ReactGA from 'react-ga'
 import { Helmet } from 'react-helmet'
 import {
   Navigate,
@@ -41,10 +42,18 @@ function App() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { isLogin } = useSelector((state) => state.auth)
+  const TRACKING_ID = process.env.VITE_API_TRACKING_ID
+
+  useEffect(() => {
+    ReactGA.initialize(TRACKING_ID)
+  }, [])
+  useEffect(() => {
+    ReactGA.pageview(location.pathname + location.search)
+  }, [location])
 
   useEffect(() => {
     dispatch(checkLoginStatus())
-  }, [dispatch])
+  }, [dispatch, location, navigate, isLogin])
 
   useEffect(() => {
     // Redirect based on login status
