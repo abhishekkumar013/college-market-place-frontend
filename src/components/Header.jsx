@@ -15,7 +15,7 @@ const Header = () => {
   const { user } = useSelector((state) => state.auth)
   const hasBeenDismissed =
     localStorage.getItem('feedbackNotificationDismissed') === 'true'
-  console.log(!hasBeenDismissed)
+  
 
   const toggleMenu = (menuName) => {
     setOpenMenu(openMenu === menuName ? null : menuName)

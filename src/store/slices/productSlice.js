@@ -567,7 +567,7 @@ export const PlacedOrder = (dataobj) => {
         toast.error(data.message)
       }
     } catch (error) {
-      console.log(error.response.data)
+     
       dispatch(
         setError(error.response?.data?.message || 'Failed to search products'),
       )

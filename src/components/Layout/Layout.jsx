@@ -24,7 +24,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
 
       <Footer />
 
-      <div className="fixed bottom-0 left-0 right-0 bg-white md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 bg-white lg:hidden">
         <MobileNavigation />
       </div>
     </div>

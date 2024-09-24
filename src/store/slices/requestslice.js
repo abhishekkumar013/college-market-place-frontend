@@ -68,7 +68,7 @@ export const getAllRequest = () => {
     } catch (error) {
       toast.error(error.response.data.message || 'Error in fetching request')
     } finally {
-      console.log('set loading false')
+     
       dispatch(setLoading(false))
     }
   }
