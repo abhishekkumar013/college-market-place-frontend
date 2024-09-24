@@ -98,7 +98,7 @@ const AddProduct = () => {
     // navigate('/product')
   }
 
-  if (!user.phone || user.hostel === 'None') {
+  if (user && !user?.phone || user?.hostel === 'None') {
     return (
       <Layout
         title="Product Listing"
@@ -108,7 +108,7 @@ const AddProduct = () => {
       >
         <div className="container mx-auto p-4 text-center mt-10 ">
           <p className="text-4xl md:text-6xl text-gray-400 mb-5">
-            Update Phone Nuber Before Listing {user.hostel}
+            Update Phone Number Before Listing Product
           </p>
           <Link to={'/profile'} className="text-red-500 underline m-5">
             <span className="text-4xl uppercase">Click To Update</span>
@@ -199,9 +199,9 @@ const AddProduct = () => {
                 onChange={handleCategoryChange}
               >
                 <option value="">Select Categories</option>
-                {categories.map((category) => (
-                  <option key={category._id} value={category._id}>
-                    {category.name}
+                {categories && categories?.map((category) => (
+                  <option key={category?._id} value={category?._id}>
+                    {category?.name}
                   </option>
                 ))}
               </select>
