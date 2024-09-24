@@ -5,27 +5,27 @@ import { SearchProducts } from '../../store/slices/productSlice'
 
 const categories = [
   {
-    id: '66dc007e1c41cc1541a3c1f8',
+    id: '66ed051ccd9e701d47729e7e',
     title: 'Clothing & Accessories',
     image: '/images/Clothing_Accessories.png',
   },
   {
-    id: '66dc007e1c41cc1541a3c1f9',
+    id: '66ed0537cd9e701d47729e87',
     title: 'Electronics',
     image: '/images/Electronics.png',
   },
   {
-    id: '66dc007e1c41cc1541a3c1f7',
+    id: '66ed0686cd9e701d47729ee2',
     title: 'Study Materials',
     image: '/images/Study_Materials.png',
   },
   {
-    id: '66dc007e1c41cc1541a3c1f6',
+    id: '66ed0677cd9e701d47729edc',
     title: 'Sports & Fitness',
     image: '/images/Sports_Fitness.png',
   },
   {
-    id: '66dc007e1c41cc1541a3c1f5',
+    id: '66ed056bcd9e701d47729e93',
     title: 'Food & Beverages',
     image: '/images/Food_Beverages.png',
   },
