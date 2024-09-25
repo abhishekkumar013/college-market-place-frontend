@@ -52,9 +52,12 @@ function App() {
     ReactGA.pageview(location.pathname + location.search)
   }, [location])
 
+  // useEffect(() => {
+  //   dispatch(checkLoginStatus())
+  // }, [dispatch, location, navigate, isLogin])
   useEffect(() => {
     dispatch(checkLoginStatus())
-  }, [dispatch, location, navigate, isLogin])
+  }, [])
 
   useEffect(() => {
     // Redirect based on login status
