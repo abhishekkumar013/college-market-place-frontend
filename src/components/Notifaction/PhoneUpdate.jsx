@@ -7,14 +7,14 @@ const PhoneUpdateNotification = () => {
   const { user } = useSelector((state) => state.auth)
 
   useEffect(() => {
-    const needsPhoneUpdate = !user.phone
+    const needsPhoneUpdate = !user?.phone
 
     const hasBeenDismissed =
       localStorage.getItem('phoneUpdateNotificationDismissed') === 'true'
 
     // Show notification only if user needs to update phone and hasn't dismissed it before
     setIsVisible(needsPhoneUpdate && !hasBeenDismissed)
-  }, [user.phone])
+  }, [user?.phone])
 
   const handleDismiss = () => {
     setIsVisible(false)

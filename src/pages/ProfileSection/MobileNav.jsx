@@ -27,14 +27,14 @@ const MobileNav = () => {
       <div className="flex items-center mb-4 justify-between w-full px-4">
         <div className="flex items-center">
           <img
-            src={user.image}
+            src={user?.image}
             alt="Profile"
             className="w-12 h-12 rounded-full mr-2"
           />
           <div>
-            <h3 className="text-lg font-bold">{user.displayName}</h3>
-            <p className="text-gray-500">{user.email}</p>
-            <p className="text-gray-500">{user.phone}</p>
+            <h3 className="text-lg font-bold">{user?.displayName}</h3>
+            <p className="text-gray-500">{user?.email}</p>
+            <p className="text-gray-500">{user?.phone}</p>
           </div>
         </div>
         <button onClick={toggleNavVisibility} className="lg:hidden text-xl">

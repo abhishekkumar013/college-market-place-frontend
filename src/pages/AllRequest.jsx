@@ -22,7 +22,7 @@ const ProducRequesttList = () => {
     refreshRequests()
   }, [isDialogOpen])
 
-  if (loading && allrequest.length == 0 && !isDialogOpen) {
+  if (loading && allrequest?.length == 0 && !isDialogOpen) {
     return (
       <Layout
         title="Product Request"
@@ -39,7 +39,7 @@ const ProducRequesttList = () => {
     )
   }
 
-  if (allrequest && allrequest.length == 0 && !isDialogOpen) {
+  if (allrequest && allrequest?.length == 0 && !isDialogOpen) {
     return (
       <Layout
         title="Product Request"

@@ -23,7 +23,7 @@ const MyRequest = () => {
     setDeleteCounter((prev) => !prev)
   }
 
-  if (loading && myrequest.length == 0 && !isDialogOpen) {
+  if (loading && myrequest?.length == 0 && !isDialogOpen) {
     return (
       <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
         <div className=" p-8 text-center">
@@ -32,7 +32,7 @@ const MyRequest = () => {
       </div>
     )
   }
-  if (myrequest && myrequest.length == 0 && !isDialogOpen) {
+  if (myrequest && myrequest?.length == 0 && !isDialogOpen) {
     return (
       <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
         <div className="bg-white shadow-md rounded-lg p-8 text-center">
@@ -71,7 +71,7 @@ const MyRequest = () => {
           <span className="w-20 text-center">Action</span>
         </div>
         <div className="max-h-80 md:max-h-96 2xl:max-h-[700px] overflow-y-auto">
-          {myrequest.map((Request) => (
+          {myrequest?.map((Request) => (
             <MyRequestCard
               key={Request._id}
               Request={Request}

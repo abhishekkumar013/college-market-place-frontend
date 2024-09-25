@@ -7,7 +7,7 @@ const FeedBackNotification = () => {
   const { user } = useSelector((state) => state.auth)
 
   useEffect(() => {
-    const needsFeedback = user.phone
+    const needsFeedback = user?.phone
 
     const hasBeenDismissed =
       localStorage.getItem('feedbackNotificationDismissed') === 'true'

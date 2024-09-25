@@ -90,7 +90,7 @@ const Login = () => {
           <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto">
             <h2 className="text-2xl font-bold mb-4">Terms & Conditions</h2>
             <ul className="list-disc pl-5 space-y-2">
-              {termsAndConditions.map((term, index) => (
+              {termsAndConditions?.map((term, index) => (
                 <li key={index}>{term}</li>
               ))}
             </ul>

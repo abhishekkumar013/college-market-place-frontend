@@ -41,7 +41,7 @@ const OrderHistory = () => {
     )
   }
 
-  if (MyProductPlaced && MyProductPlaced.length === 0) {
+  if (MyProductPlaced && MyProductPlaced?.length === 0) {
     return (
       <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
         <div className="bg-white shadow-md rounded-lg p-8 text-center">
@@ -65,7 +65,7 @@ const OrderHistory = () => {
           <span>Review</span>
         </div>
         <div className="max-h-[calc(100vh-200px)] overflow-y-auto">
-          {MyProductPlaced.map((item, index) => (
+          {MyProductPlaced && MyProductPlaced?.map((item, index) => (
             <div
               key={index}
               className="flex flex-col sm:grid sm:grid-cols-4 items-center p-4 border-b last:border-b-0 hover:bg-gray-50"
@@ -79,22 +79,22 @@ const OrderHistory = () => {
                   />
                 </div>
                 <div className="flex-grow sm:flex-grow-0">
-                  <p className="font-semibold">{item.product.name}</p>
+                  <p className="font-semibold">{item?.product?.name}</p>
                   {/* <p className="text-sm text-gray-600 line-through">
-                    MRP: ₹{item.product.price}
+                    MRP: ₹{item?.product.price}
                   </p> */}
                   <p className="text-sm font-medium text-green-600">
-                    Price: ₹{item.product.finalPrice}
+                    Price: ₹{item?.product?.finalPrice}
                   </p>
                 </div>
               </div>
               <div className="w-full sm:w-auto text-center sm:text-left mb-2 sm:mb-0">
-                {item.buyer.displayName}
+                {item?.buyer.displayName}
               </div>
               <div className="flex space-x-2 justify-center sm:justify-start">
                 <button
                   onClick={() =>
-                    handleUpadet({ id: item._id, status: 'cancelled' })
+                    handleUpadet({ id: item?._id, status: 'cancelled' })
                   }
                   className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-full text-sm"
                 >
@@ -102,7 +102,7 @@ const OrderHistory = () => {
                 </button>
                 <button
                   onClick={() =>
-                    handleUpadet({ id: item._id, status: 'delivered' })
+                    handleUpadet({ id: item?._id, status: 'delivered' })
                   }
                   className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-full text-sm"
                 >

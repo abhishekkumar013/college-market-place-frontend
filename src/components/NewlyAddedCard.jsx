@@ -56,11 +56,11 @@ const NewlyAddedCard = ({ product }) => {
           ₹{product.finalPrice}
         </p>
         <p className="text-xs text-red-600 hover:text-red-700  transition-colors duration-300">
-          {product.discount}% off
+          {product?.discount}% off
         </p>
       </div>
       <p className="text-xs text-gray-500 w-full">
-        <span className="line-through">M.R.P: ₹{product.mrp}</span>
+        <span className="line-through">M.R.P: ₹{product?.mrp}</span>
       </p>
       <div className="flex flex-col sm:flex-row w-full mt-1 space-y-1 sm:space-y-0 sm:space-x-1">
         {product.isSold ? (

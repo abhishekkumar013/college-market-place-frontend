@@ -18,7 +18,7 @@ const MobileNavigation = () => {
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 pb-safe lg:hidden">
       <div className="flex justify-between items-center px-2 py-1">
-        {navItems.map((item) => {
+        {navItems?.map((item) => {
           const IconComponent = item.icon
           const isActive = location.pathname === item.path
           return (
@@ -41,9 +41,9 @@ const MobileNavigation = () => {
                       : 'text-gray-600 scale-100'
                   }`}
                 />
-                {item.label === 'Cart' && cart.length > 0 && (
+                {item?.label === 'Cart' && cart?.length > 0 && (
                   <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                    {cart.length}
+                    {cart?.length}
                   </div>
                 )}
               </div>
@@ -52,7 +52,7 @@ const MobileNavigation = () => {
                   isActive ? 'text-green-500' : 'text-gray-600'
                 }`}
               >
-                {item.label}
+                {item?.label}
               </span>
             </Link>
           )

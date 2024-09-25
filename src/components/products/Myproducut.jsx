@@ -9,7 +9,7 @@ const Myproduct = () => {
     (state) => state.product,
   )
   const dispatch = useDispatch()
-  console.log(myProduct)
+ 
 
   useEffect(() => {
     dispatch(getAllMyProduct())
@@ -23,7 +23,7 @@ const Myproduct = () => {
     )
   }
 
-  if (myProduct && myProduct.length === 0) {
+  if (myProduct && myProduct?.length === 0) {
     return (
       <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
         <div className="bg-white shadow-md rounded-lg p-8 text-center">
@@ -48,8 +48,8 @@ const Myproduct = () => {
           <span>Actions</span>
         </div>
         <div className="max-h-[calc(100vh-200px)] overflow-y-auto">
-          {myProduct.map((product) => (
-            <MyProductCard key={product._id} product={product} />
+          {myProduct?.map((product) => (
+            <MyProductCard key={product?._id} product={product} />
           ))}
         </div>
       </div>

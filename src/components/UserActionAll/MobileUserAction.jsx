@@ -38,9 +38,9 @@ const MobileUserActions = () => {
         <ShoppingCart className="mr-2" size={20} />
         <span className="relative">
           Cart
-          {cart.length > 0 && (
+          {cart?.length > 0 && (
             <span className="absolute -top-1 -right-6 bg-red-500 text-white text-xs font-bold rounded-full h-5 min-w-5 flex items-center justify-center px-1">
-              {cart.length}
+              {cart?.length}
             </span>
           )}
         </span>
@@ -51,7 +51,7 @@ const MobileUserActions = () => {
       >
         {user?.image ? (
           <img
-            src={user.image}
+            src={user?.image}
             alt="User"
             className="w-6 h-6 rounded-full mr-2"
           />

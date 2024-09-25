@@ -30,24 +30,24 @@ const MyProductCard = ({ product }) => {
       <div className="flex items-center space-x-3 mb-2 md:mb-0 col-span-2">
         <img
           src={product?.image?.url}
-          alt={product.name}
+          alt={product?.name}
           className="w-12 h-12 rounded-full object-cover"
         />
-        <span className="font-semibold">{product.name}</span>
+        <span className="font-semibold">{product?.name}</span>
       </div>
       <div className="flex flex-col items-start mb-2 md:mb-0">
         <div className="flex gap-2">
           Mrp:
-          <span className="text-gray-500 line-through"> ₹{product.mrp}</span>
+          <span className="text-gray-500 line-through"> ₹{product?.mrp}</span>
         </div>
         <span className="font-semibold text-green-600">
-          Price: ₹{product.finalPrice}
+          Price: ₹{product?.finalPrice}
         </span>
         <span className="text-sm text-blue-600">
-          Discount: {product.discount}% off
+          Discount: {product?.discount}% off
         </span>
       </div>
-      <div className="mb-2 md:mb-0">{product.quantity}</div>
+      <div className="mb-2 md:mb-0">{product?.quantity}</div>
       <div className="flex space-x-2">
         <button
           onClick={handleUpdateStatus}

@@ -45,7 +45,7 @@ const MySales = () => {
           <span>Sold To</span>
         </div>
         <div className="max-h-[calc(100vh-200px)] overflow-y-auto">
-          {saleout.map((sale) => (
+          {saleout?.map((sale) => (
             <div
               key={sale._id}
               className="flex flex-col sm:grid sm:grid-cols-4 items-start sm:items-center p-4 border-b last:border-b-0 hover:bg-gray-50"
@@ -54,24 +54,24 @@ const MySales = () => {
                 <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
                   <img
                     src={sale?.product?.image?.url}
-                    alt={sale.product.name}
+                    alt={sale?.product?.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="flex-grow sm:flex-grow-0">
-                  <p className="font-semibold">{sale.product.name}</p>
+                  <p className="font-semibold">{sale?.product?.name}</p>
                   <p className="text-sm font-medium text-green-600">
-                    Price: ₹{sale.product.finalPrice}
+                    Price: ₹{sale?.product?.finalPrice}
                   </p>
                 </div>
               </div>
               <div className="w-full sm:w-auto text-left sm:text-left mb-2 sm:mb-0">
                 <span className="sm:hidden font-semibold mr-2">Sold on:</span>
-                {sale.saleTime}
+                {sale?.saleTime}
               </div>
               <div className="w-full sm:w-auto text-left sm:text-left">
                 <span className="sm:hidden font-semibold mr-2">Sold to:</span>
-                {sale.buyer.displayName}
+                {sale?.buyer?.displayName}
               </div>
             </div>
           ))}

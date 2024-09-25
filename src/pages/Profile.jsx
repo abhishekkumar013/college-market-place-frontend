@@ -171,8 +171,8 @@ const Profile = () => {
       <div className="flex flex-col sm:flex-row">
         <div className="mb-4 sm:mb-0 sm:mr-6 sm:w-1/3">
           <img
-            src={user.image}
-            alt={user.displayName}
+            src={user?.image}
+            alt={user?.displayName}
             className="w-32 h-32 rounded-full mx-auto"
           />
         </div>
@@ -200,7 +200,7 @@ const Profile = () => {
               >
                 Email:
               </label>
-              <p className="text-gray-700">{user.email}</p>
+              <p className="text-gray-700">{user?.email}</p>
             </div>
             <div>
               <label

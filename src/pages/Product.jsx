@@ -53,7 +53,7 @@ const Product = () => {
     )
   }
 
-  if (products.length === 0) {
+  if (products && products?.length === 0) {
     return (
       <Layout
         title="product"
@@ -92,13 +92,13 @@ const Product = () => {
       `🛒 Order Details:\n\n` +
       `Product: ${product.name}\n` +
       `Quantity: ${quantity}\n` +
-      `Price: ₹${product.finalPrice}\n` +
+      `Price: ₹${product?.finalPrice}\n` +
       `Total: ₹${totalPrice}\n` +
       `Discount: ${discount}%\n` +
       `MRP: ₹${product.mrp}\n\n` +
       `Seller: ${product.sellerName}`
 
-    return `https://wa.me/91${product.phone}?text=${encodeURIComponent(
+    return `https://wa.me/91${product?.phone}?text=${encodeURIComponent(
       message,
     )}`
   }

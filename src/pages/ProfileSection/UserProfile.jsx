@@ -20,15 +20,15 @@ const UserProfile = () => {
     <div className="hidden md:flex p-4 h-screen  flex-col ">
       <div className="flex items-center mb-4 2xl:mt-20 ms-5">
         <img
-          src={user.image}
+          src={user?.image}
           alt="Profile"
           className="w-[65px] h-[65px] rounded-full mr-2"
         />
 
         <div>
-          <h3 className="text-lg font-bold">{user.displayName}</h3>
-          <p className="text-gray-500 text-sm">{user.email}</p>
-          <p className="text-gray-500  text-sm">{user.phone}</p>
+          <h3 className="text-lg font-bold">{user?.displayName}</h3>
+          <p className="text-gray-500 text-sm">{user?.email}</p>
+          <p className="text-gray-500  text-sm">{user?.phone}</p>
         </div>
       </div>
 
