@@ -50,6 +50,7 @@ const hostelOptions = [
   'QC-11',
   'QC-16',
   'QC-17',
+  
 ]
 
 const CustomDropdown = ({ value, onChange, options }) => {
