@@ -7,10 +7,11 @@ import {
   PlacedOrder,
 } from '../store/slices/productSlice'
 import Loader from '../components/Loaders/Loader'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Layout from '../components/Layout/Layout'
 
 const Product = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const { products, searchResults, loading, hasMore } = useSelector(
     (state) => state.product,
@@ -102,6 +103,13 @@ const Product = () => {
       message,
     )}`
   }
+  const handleCardClick = (productId, event) => {
+    event.preventDefault()
+
+    if (!event.target.closest('button')) {
+      navigate(`/product/${productId}`)
+    }
+  }
 
   const handleOrderNow = (product) => {
     const dataobj = {
@@ -154,7 +162,8 @@ const Product = () => {
               {displayProducts.map((product) => (
                 <div
                   key={product?._id}
-                  className="border rounded-lg p-3 shadow-md hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 flex flex-col h-auto sm:h-[270px] bg-white group"
+                  className="border rounded-lg p-3 shadow-md hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 flex flex-col h-auto sm:h-[270px] bg-white group cursor-pointer"
+                  onClick={(e) => handleCardClick(product._id, e)}
                 >
                   <div className="mb-2 h-20 sm:h-28 flex items-center justify-center overflow-hidden">
                     <img
@@ -188,13 +197,19 @@ const Product = () => {
                     ) : (
                       <>
                         <button
-                          onClick={() => dispatch(addNewToCart(product))}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            dispatch(addNewToCart(product))
+                          }}
                           className="flex-1 bg-green-500 text-white py-1.5 px-2 rounded-full hover:bg-green-600 transition-all duration-300 text-xs sm:text-sm hover:shadow-md"
                         >
                           Add to Cart
                         </button>
                         <button
-                          onClick={() => handleOrderNow(product)}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleOrderNow(product)
+                          }}
                           className="flex-1 bg-green-600 text-white py-1.5 px-2 rounded-full hover:bg-green-700 transition-all duration-300 text-xs sm:text-sm hover:shadow-md"
                         >
                           Buy Now

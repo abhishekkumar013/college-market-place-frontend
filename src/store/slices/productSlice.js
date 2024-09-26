@@ -23,6 +23,7 @@ const initialState = {
   isProductLoading: false,
   error: null,
   shouldRefreshProductList: false,
+  productDetails: null,
 }
 
 const productSlice = createSlice({
@@ -86,6 +87,9 @@ const productSlice = createSlice({
     setMyProduct(state, action) {
       state.myProduct = action.payload
     },
+    setProductDetails(state, action) {
+      state.productDetails = action.payload
+    },
     setSearchResults(state, action) {
       state.searchResults = action.payload
     },
@@ -148,6 +152,7 @@ export const {
   clearMyPlacedProduct,
   myProdcutDelete,
   setisProductLoading,
+  setProductDetails,
 } = productSlice.actions
 
 export default productSlice.reducer
@@ -322,6 +327,33 @@ export const getAllMyProduct = () => {
       dispatch(
         setError(
           error.response?.data?.message || 'Failed to get youur product',
+        ),
+      )
+    } finally {
+      dispatch(setLoading(false))
+    }
+  }
+}
+
+export const getProductDetails = (id) => {
+  return async (dispatch, getState) => {
+    dispatch(setLoading(true))
+    dispatch(clearMessage())
+    const { token } = getState().auth
+    try {
+      const { data } = await axios.get(`${server}/product/${id}`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      console.log('prd', data)
+
+      dispatch(setProductDetails(data.data))
+    } catch (error) {
+      dispatch(
+        setError(
+          error.response?.data?.message || 'Failed to get product Details',
         ),
       )
     } finally {

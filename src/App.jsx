@@ -37,6 +37,7 @@ import { getAllCategory } from './store/slices/categorySlice.js'
 import MyOrder from './components/products/MyOrder.jsx'
 import Restaurants from './pages/Restaurants.jsx'
 import TermsAndConditions from './pages/TermsAndCondition/TermsAndConditions.jsx'
+import ProductDetails from './pages/ProductDetails.jsx'
 
 function App() {
   const location = useLocation()
@@ -88,6 +89,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/about-us" element={<About />} />
       <Route path="/product" element={<Product />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/product-listing" element={<AddProduct />} />
       <Route path="/all-request" element={<ProducRequesttList />} />
       <Route path="/contact-us" element={<ContactUs />} />

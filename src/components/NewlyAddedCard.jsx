@@ -1,9 +1,11 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addNewToCart, PlacedOrder } from '../store/slices/productSlice'
+import { useNavigate } from 'react-router-dom'
 
 const NewlyAddedCard = ({ product }) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const handleAddToCart = () => {
     dispatch(addNewToCart(product))
   }
@@ -40,9 +42,19 @@ const NewlyAddedCard = ({ product }) => {
     const link = generateProductWhatsAppMessage(product)
     window.open(link, '_blank')
   }
+  const handleCardClick = (productId, event) => {
+    event.preventDefault()
+
+    if (!event.target.closest('button')) {
+      navigate(`/product/${productId}`)
+    }
+  }
 
   return (
-    <div className="bg-white rounded-lg p-3 flex flex-col items-center border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+    <div
+      className="bg-white rounded-lg p-3 flex flex-col items-center border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+      onClick={(e) => handleCardClick(product._id, e)}
+    >
       <img
         src={product?.image?.url}
         alt={product.name}
