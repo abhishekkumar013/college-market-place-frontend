@@ -58,7 +58,7 @@ const AddProduct = () => {
   const updateFinalPrice = (mrp, discount, additionalCharge) => {
     discount = discount || 0
     additionalCharge = parseFloat(additionalCharge) || 0
-    const price = mrp - mrp * (discount / 100) + additionalCharge
+    const price = Math.ceil(mrp - mrp * (discount / 100) + additionalCharge)
 
     setFinalPrice(price.toFixed(2))
   }
