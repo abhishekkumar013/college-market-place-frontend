@@ -20,10 +20,10 @@ const MyProductCard = ({ product }) => {
     setOpen(false)
   }
 
-  const handleUpdateStatus = () => {
+  const handleUpdateStatus = useCallback(() => {
     dispatch(updateProductStatus(product._id))
     dispatch(getAllMyProduct())
-  }
+  }, [dispatch, product._id])
 
   return (
     <div className="flex flex-col md:grid md:grid-cols-5 items-center p-4 border-b last:border-b-0 hover:bg-gray-50 md:me-2">

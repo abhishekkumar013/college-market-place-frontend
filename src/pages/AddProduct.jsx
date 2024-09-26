@@ -63,6 +63,19 @@ const AddProduct = () => {
     setFinalPrice(price.toFixed(2))
   }
 
+  const clearForm = () => {
+    setQuantity(1)
+    setImagePreview(null)
+    setImage(null)
+    setName('')
+    setDescription('')
+    setCategory('')
+    setMrp('')
+    setDiscount('')
+    setFinalPrice('')
+    setAdditionalCharge('')
+  }
+
   const handleSubmit = async () => {
     const formData = new FormData()
     formData.append('name', name)
@@ -83,22 +96,16 @@ const AddProduct = () => {
     //   console.log(key, value)
     // }
 
-    dispatch(addNewProduct(formData))
-    setQuantity(1)
-    setImagePreview(null)
-    setImage(null)
-    setName('')
-    setDescription('')
-    setCategory('')
-    setMrp('')
-    setDiscount('')
-    setFinalPrice('')
-    setAdditionalCharge('')
+    const success = await dispatch(addNewProduct(formData))
+    if (success) {
+      clearForm()
+      navigate('/product')
+    }
 
     // navigate('/product')
   }
 
-  if (user && !user?.phone || user?.hostel === 'None') {
+  if ((user && !user?.phone) || user?.hostel === 'None') {
     return (
       <Layout
         title="Product Listing"
@@ -199,11 +206,12 @@ const AddProduct = () => {
                 onChange={handleCategoryChange}
               >
                 <option value="">Select Categories</option>
-                {categories && categories?.map((category) => (
-                  <option key={category?._id} value={category?._id}>
-                    {category?.name}
-                  </option>
-                ))}
+                {categories &&
+                  categories?.map((category) => (
+                    <option key={category?._id} value={category?._id}>
+                      {category?.name}
+                    </option>
+                  ))}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
                 <svg

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
@@ -57,4 +57,4 @@ const DeveloperCard = ({
   )
 }
 
-export default DeveloperCard
+export default memo(DeveloperCard)

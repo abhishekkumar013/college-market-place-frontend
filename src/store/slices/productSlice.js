@@ -168,12 +168,15 @@ export const addNewProduct = (productData) => {
         toast.success(data.message)
         dispatch(addProduct(data.data))
         dispatch(setMessage(data.message || 'Product added successfully'))
+        return true
       }
+      return false
     } catch (error) {
       toast.error(error?.response?.data?.message || 'Failed to add product')
       dispatch(
         setError(error?.response?.data?.message || 'Failed to add product'),
       )
+      return false // Indicate failure
     } finally {
       dispatch(setisProductLoading(false))
     }
@@ -567,7 +570,6 @@ export const PlacedOrder = (dataobj) => {
         toast.error(data.message)
       }
     } catch (error) {
-     
       dispatch(
         setError(error.response?.data?.message || 'Failed to search products'),
       )
