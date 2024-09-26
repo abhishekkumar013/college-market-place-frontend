@@ -60,7 +60,7 @@ const ProductDetails = () => {
 
   if (loading) {
     return (
-      <Layout title="Product Details">
+      <Layout title="Product Details" author="Abhishek Kumar">
         <div className="flex justify-center items-center h-screen">
           <Loader />
         </div>
@@ -70,16 +70,37 @@ const ProductDetails = () => {
 
   if (!productDetails) {
     return (
-      <Layout title="Product Not Found">
-        <div className="container mx-auto px-4 py-8">
-          <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
+      <Layout title="Product Not Found" author="Abhishek Kumar">
+        <div className="container mx-auto px-4 py-8 flex flex-col items-center justify-center text-center">
+          <img
+            src="/images/not-found.webp"
+            alt="Not Found"
+            className="w-1/2 md:w-1/4 mb-6 opacity-75"
+          />
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Oops! Product Not Found
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 mb-6">
+            The product you're looking for might have been removed or is
+            temporarily unavailable.
+          </p>
+          <button
+            onClick={() => window.history.back()}
+            className="bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-600 transition-colors duration-300"
+          >
+            Go Back
+          </button>
         </div>
       </Layout>
     )
   }
 
   return (
-    <Layout title={productDetails.name}>
+    <Layout
+      title={productDetails.name}
+      keywords={productDetails.desc}
+      author="Abhishek Kumar"
+    >
       <div className="container mx-auto px-4 py-4 sm:py-8 max-w-6xl">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="flex flex-col md:flex-row">
