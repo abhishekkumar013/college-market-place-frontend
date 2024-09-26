@@ -42,7 +42,9 @@ const ProductEditDialog = ({ open, onClose, product }) => {
   }, [newImage, product.image])
 
   const updateFinalPrice = (mrp, discount, additionalCharge) => {
-    const price = mrp - mrp * (discount / 100) + Number(additionalCharge)
+    const price = Math.ceil(
+      mrp - mrp * (discount / 100) + Number(additionalCharge),
+    )
     return price.toFixed(2)
   }
 
