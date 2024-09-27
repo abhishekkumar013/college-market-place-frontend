@@ -7,6 +7,7 @@ import { getAllLatestProducts } from '../store/slices/productSlice'
 import Layout from '../components/Layout/Layout'
 import ProductCarousel from '../components/Crosual/ProductCrosual'
 import { Link } from 'react-router-dom'
+import Loader from '../components/Loaders/Loader'
 
 const categories = [
   {
@@ -39,12 +40,18 @@ const categories = [
 const Home = () => {
   const dispatch = useDispatch()
   const [showCategories, setShowCategories] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   const { latestProducts } = useSelector((state) => state.product)
 
   useEffect(() => {
-    dispatch(getAllLatestProducts())
-    dispatch(checkLoginStatus())
+    const fetchData = async () => {
+      setIsLoading(true)
+      await dispatch(checkLoginStatus())
+      await dispatch(getAllLatestProducts())
+      setIsLoading(false)
+    }
+    fetchData()
   }, [dispatch])
 
   useEffect(() => {
@@ -99,7 +106,11 @@ const Home = () => {
           {/* Newly Added Products Section */}
           <div className="mt-8 pb-16 md:pb-0">
             <h2 className="text-2xl text-center font-bold mb-4">Newly Added</h2>
-            {latestProducts && latestProducts.length === 0 ? (
+            {isLoading ? (
+              <div className="flex justify-center items-center h-64">
+                <Loader />
+              </div>
+            ) : latestProducts && latestProducts.length === 0 ? (
               <div className="mt-5  md:flex md:justify-center items-center ">
                 <div className="bg-white shadow-md rounded-lg p-8 text-center">
                   <h2 className="text-2xl font-bold mb-4">No Products Found</h2>
