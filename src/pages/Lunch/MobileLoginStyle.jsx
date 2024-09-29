@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { FcGoogle } from 'react-icons/fc'
 import { gsap } from 'gsap'
 import { loginSuccess } from '../../store/slices/authSlice'
+import { toast } from 'react-toastify'
 
 const MobileLoginStyle = () => {
   const navigate = useNavigate()
@@ -48,7 +49,8 @@ const MobileLoginStyle = () => {
     const error = params.get('error')
     if (error) {
       setErrorMessage(decodeURIComponent(error))
-      alert(error)
+      // alert(error)
+      toast.warn(error)
     }
     const token = params.get('token')
     if (token) {

@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { gsap } from 'gsap'
 import { loginSuccess } from '../../store/slices/authSlice'
+import { toast } from 'react-toastify'
 
 const LoginStyle = () => {
   const navigate = useNavigate()
@@ -51,7 +52,8 @@ const LoginStyle = () => {
     const error = params.get('error')
     if (error) {
       setErrorMessage(decodeURIComponent(error))
-      alert(error)
+      // alert(error)
+      toast.warn(error)
     }
   }, [])
 
