@@ -58,7 +58,7 @@ const UserProfile = () => {
           onClick={() => handleTabClick('yourRequest')}
         >
           <VscGitPullRequestGoToChanges />
-          <span className="text-black font-semibold ml-2">Your's Request</span>
+          <span className="text-black font-semibold ml-2">My Request</span>
         </Link>
         <Link
           to="/profile/sales"
@@ -70,7 +70,7 @@ const UserProfile = () => {
           onClick={() => handleTabClick('yourSale')}
         >
           <AiOutlineShoppingCart />
-          <span className="text-black font-semibold  ml-2">Your's Sale</span>
+          <span className="text-black font-semibold  ml-2">My Sale</span>
         </Link>
         <Link
           to="/profile/product"
@@ -82,7 +82,7 @@ const UserProfile = () => {
           onClick={() => handleTabClick('yourProduct')}
         >
           <MdOutlineAddShoppingCart />
-          <span className="text-black font-semibold ml-2">Your's Product</span>
+          <span className="text-black font-semibold ml-2">My Product</span>
         </Link>
         <Link
           to="/profile/review-orders"
