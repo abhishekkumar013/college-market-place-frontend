@@ -76,11 +76,11 @@ export const checkUserAuth = () => async (dispatch) => {
     const { data } = await axios.get(`${server}/user/isauth`, {
       withCredentials: true,
     });
-    console.log("Userji", data);
+    console.log("Userji", data.data);
 
-    if (data && data.user) {
+    if (data) {
       // Successfully retrieved user data, set as logged in
-      dispatch(loginSuccess(data.user));
+      dispatch(loginSuccess(data.data));
     }
   } catch (error) {
     // Failed to retrieve session, treat as not logged in
