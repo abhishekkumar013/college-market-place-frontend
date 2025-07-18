@@ -1,94 +1,106 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { server } from '../../main'
-import axios from 'axios'
-import { toast } from 'react-toastify'
+import { createSlice } from "@reduxjs/toolkit";
+import { server } from "../../main";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState = {
-  isLogin: localStorage.getItem('isLogin') === 'true' || false,
-  user: (() => {
-    const storedUser = localStorage.getItem('user')
-    return storedUser && storedUser !== 'undefined'
-      ? JSON.parse(storedUser)
-      : null
-  })(),
-  message: '',
-}
+  isLogin: localStorage.getItem("isLogin") === "true" || false,
+  user: null,
+  message: "",
+};
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     loginSuccess(state, action) {
-      state.isLogin = true
-      state.user = action.payload
-      localStorage.setItem('isLogin', 'true')
-      localStorage.setItem('user', JSON.stringify(action.payload))
+      state.isLogin = true;
+      state.user = action.payload;
+      localStorage.setItem("isLogin", "true");
+      localStorage.setItem("user", JSON.stringify(action.payload));
     },
     loginFailed(state) {
-      state.isLogin = false
-      state.user = null
-      localStorage.setItem('isLogin', 'false')
-      localStorage.removeItem('user')
+      state.isLogin = false;
+      state.user = null;
+      localStorage.setItem("isLogin", "false");
+      localStorage.removeItem("user");
     },
     logoutSuccess(state) {
-      localStorage.setItem('isLogin', 'false')
-      localStorage.removeItem('user')
-      state.isLogin = false
-      state.user = null
+      localStorage.setItem("isLogin", "false");
+      localStorage.removeItem("user");
+      state.isLogin = false;
+      state.user = null;
     },
     updateProfileSuccess(state, action) {
-      state.user = action.payload
-      localStorage.setItem('user', JSON.stringify(action.payload))
+      state.user = action.payload;
+      localStorage.setItem("user", JSON.stringify(action.payload));
     },
   },
-})
+});
 
 export const {
   loginSuccess,
   loginFailed,
   logoutSuccess,
   updateProfileSuccess,
-} = authSlice.actions
+} = authSlice.actions;
 
-export default authSlice.reducer
+export default authSlice.reducer;
 
 export const checkLoginStatus = () => async (dispatch) => {
-  const user = localStorage.getItem('user')
+  const user = localStorage.getItem("user");
 
   if (user) {
-    dispatch(loginSuccess(JSON.parse(user)))
+    dispatch(loginSuccess(JSON.parse(user)));
   } else {
     try {
       // Call backend to check if the session is still valid
       const { data } = await axios.get(`${server}/user/login/success`, {
         withCredentials: true,
-      })
+      });
 
       if (data && data.user) {
         // Successfully retrieved user data, set as logged in
-        dispatch(loginSuccess(data.user))
+        dispatch(loginSuccess(data.user));
       }
     } catch (error) {
       // Failed to retrieve session, treat as not logged in
-      dispatch(loginFailed())
+      dispatch(loginFailed());
     }
   }
-}
+};
+
+export const checkUserAuth = () => async (dispatch) => {
+  try {
+    // Call backend to check if the session is still valid
+    const { data } = await axios.get(`${server}/user/isauth`, {
+      withCredentials: true,
+    });
+
+    if (data && data.user) {
+      // Successfully retrieved user data, set as logged in
+      dispatch(loginSuccess(data.user));
+    }
+  } catch (error) {
+    // Failed to retrieve session, treat as not logged in
+    dispatch(loginFailed());
+  }
+};
 
 export const logoutUser = () => async (dispatch) => {
   try {
     await axios.get(`${server}/user/logout`, {
       withCredentials: true,
-    })
+    });
 
-    dispatch(logoutSuccess())
+    dispatch(logoutSuccess());
 
-    toast.success('Logged out successfully')
+    toast.success("Logged out successfully");
   } catch (error) {
-    toast.error('Error logging out')
-    dispatch(logoutSuccess())
+    toast.error("Error logging out");
+    dispatch(logoutSuccess());
   }
-}
+};
 
 export const updateUserProfile = (userData) => async (dispatch, getState) => {
   try {
@@ -98,16 +110,16 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
       userData,
       {
         withCredentials: true,
-      },
-    )
+      }
+    );
 
     if (data.success) {
-      toast.success(data.message)
-      dispatch(updateProfileSuccess(data.data))
+      toast.success(data.message);
+      dispatch(updateProfileSuccess(data.data));
       // dispatch(loginSuccess(data.user))
     }
   } catch (error) {
-    const errorMessage = error.response?.data?.message || error.message
-    toast.error(errorMessage)
+    const errorMessage = error.response?.data?.message || error.message;
+    toast.error(errorMessage);
   }
-}
+};

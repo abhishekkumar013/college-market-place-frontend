@@ -1,84 +1,88 @@
-import React, { useEffect } from 'react'
-import ReactGA from 'react-ga'
-import { Helmet } from 'react-helmet'
+import React, { useEffect } from "react";
+import ReactGA from "react-ga";
+import { Helmet } from "react-helmet";
 import {
   Navigate,
   Route,
   Routes,
   useLocation,
   useNavigate,
-} from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { checkLoginStatus } from './store/slices/authSlice.js'
-import { getAllMyProduct, getAllProducts } from './store/slices/productSlice.js'
+} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { checkLoginStatus, checkUserAuth } from "./store/slices/authSlice.js";
+import {
+  getAllMyProduct,
+  getAllProducts,
+} from "./store/slices/productSlice.js";
 
 // Components
-import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
-import Sidebar from './pages/ProfileSection/Sidebar.jsx'
-import PageNotFound from './components/PageNotFound/PageNotFouund.jsx'
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import Sidebar from "./pages/ProfileSection/Sidebar.jsx";
+import PageNotFound from "./components/PageNotFound/PageNotFouund.jsx";
 
 // Pages
-import Home from './pages/Home'
-import About from './pages/About.jsx'
-import Product from './pages/Product.jsx'
-import AddProduct from './pages/AddProduct.jsx'
-import ProducRequesttList from './pages/AllRequest.jsx'
-import ContactUs from './pages/ContactUs.jsx'
-import Cart from './pages/Cart.jsx'
-import OrderHistory from './components/products/OrderHistory.jsx'
-import AddCategory from './pages/AddCategory.jsx'
-import Profile from './pages/Profile.jsx'
-import LoginPage from './pages/Login/LoginPage.jsx'
-import MyRequest from './components/products/MyRequest.jsx'
-import MySales from './components/products/MySales.jsx'
-import Myproducut from './components/products/Myproducut.jsx'
-import { getAllCategory } from './store/slices/categorySlice.js'
-import MyOrder from './components/products/MyOrder.jsx'
-import Restaurants from './pages/Restaurants.jsx'
-import TermsAndConditions from './pages/TermsAndCondition/TermsAndConditions.jsx'
-import ProductDetails from './pages/ProductDetails.jsx'
+import Home from "./pages/Home";
+import About from "./pages/About.jsx";
+import Product from "./pages/Product.jsx";
+import AddProduct from "./pages/AddProduct.jsx";
+import ProducRequesttList from "./pages/AllRequest.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
+import Cart from "./pages/Cart.jsx";
+import OrderHistory from "./components/products/OrderHistory.jsx";
+import AddCategory from "./pages/AddCategory.jsx";
+import Profile from "./pages/Profile.jsx";
+import LoginPage from "./pages/Login/LoginPage.jsx";
+import MyRequest from "./components/products/MyRequest.jsx";
+import MySales from "./components/products/MySales.jsx";
+import Myproducut from "./components/products/Myproducut.jsx";
+import { getAllCategory } from "./store/slices/categorySlice.js";
+import MyOrder from "./components/products/MyOrder.jsx";
+import Restaurants from "./pages/Restaurants.jsx";
+import TermsAndConditions from "./pages/TermsAndCondition/TermsAndConditions.jsx";
+import ProductDetails from "./pages/ProductDetails.jsx";
 
 function App() {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { isLogin } = useSelector((state) => state.auth)
-  const TRACKING_ID = import.meta.env.VITE_API_TRACKING_ID
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isLogin } = useSelector((state) => state.auth);
+  const TRACKING_ID = import.meta.env.VITE_API_TRACKING_ID;
 
   useEffect(() => {
-    ReactGA.initialize(TRACKING_ID)
-  }, [])
+    ReactGA.initialize(TRACKING_ID);
+  }, []);
   useEffect(() => {
-    ReactGA.pageview(location.pathname + location.search)
-  }, [location])
+    ReactGA.pageview(location.pathname + location.search);
+  }, [location]);
 
   // useEffect(() => {
   //   dispatch(checkLoginStatus())
   // }, [dispatch, location, navigate, isLogin])
   useEffect(() => {
-    dispatch(checkLoginStatus())
-  }, [])
+    // dispatch(checkLoginStatus())
+    dispatch(checkUserAuth());
+  }, []);
 
   useEffect(() => {
     // Redirect based on login status
 
     if (isLogin) {
-      if (location.pathname === '/login') {
-        navigate('/')
+      if (location.pathname === "/login") {
+        navigate("/");
       }
-    } else if (location.pathname !== '/login') {
-      navigate('/login')
+    } else if (location.pathname !== "/login") {
+      navigate("/login");
     }
-  }, [isLogin, location.pathname, navigate])
+  }, [isLogin, location.pathname, navigate]);
 
   useEffect(() => {
-    dispatch(getAllProducts())
-    dispatch(getAllCategory())
-  })
+    dispatch(getAllProducts());
+    dispatch(getAllCategory());
+  });
 
   // Check if the current route is the 404 page
-  const is404Page = location.pathname === '/404'
+  const is404Page = location.pathname === "/404";
 
   return (
     // <div className="flex flex-col min-h-screen">
@@ -112,7 +116,7 @@ function App() {
     //   </div>
     //   {!is404Page && location.pathname !== '/login' && <Footer />}
     // </div>
-  )
+  );
 }
 
-export default App
+export default App;
