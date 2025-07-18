@@ -76,6 +76,7 @@ export const checkUserAuth = () => async (dispatch) => {
     const { data } = await axios.get(`${server}/user/isauth`, {
       withCredentials: true,
     });
+    console.log("Userji", data);
 
     if (data && data.user) {
       // Successfully retrieved user data, set as logged in
