@@ -82,6 +82,8 @@ function App() {
   // Check if the current route is the 404 page
   const is404Page = location.pathname === "/404";
 
+  console.log(loading);
+
   if (loading) {
     return (
       <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
