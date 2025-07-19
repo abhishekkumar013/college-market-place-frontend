@@ -57,13 +57,18 @@ function App() {
     ReactGA.pageview(location.pathname + location.search);
   }, [location]);
 
-  useEffect(() => {
-    // dispatch(checkLoginStatus())
-    dispatch(checkUserAuth());
-  }, []);
+  const [initialCheckDone, setInitialCheckDone] = React.useState(false);
 
   useEffect(() => {
-    // Redirect based on login status
+    const checkAuth = async () => {
+      await dispatch(checkUserAuth());
+      setInitialCheckDone(true);
+    };
+    checkAuth();
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!initialCheckDone) return;
 
     if (isLogin) {
       if (location.pathname === "/login") {
@@ -72,7 +77,7 @@ function App() {
     } else if (location.pathname !== "/login") {
       navigate("/login");
     }
-  }, [isLogin, location.pathname, navigate]);
+  }, [isLogin, location.pathname, navigate, initialCheckDone]);
 
   useEffect(() => {
     dispatch(getAllProducts());
