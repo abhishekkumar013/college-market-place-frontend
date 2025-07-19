@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga";
-import { Helmet } from "react-helmet";
 import {
   Navigate,
   Route,
@@ -9,17 +8,16 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { checkLoginStatus, checkUserAuth } from "./store/slices/authSlice.js";
-import {
-  getAllMyProduct,
-  getAllProducts,
-} from "./store/slices/productSlice.js";
+import { checkUserAuth } from "./store/slices/authSlice.js";
+import { getAllProducts } from "./store/slices/productSlice.js";
+import { getAllCategory } from "./store/slices/categorySlice.js";
 
 // Components
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Sidebar from "./pages/ProfileSection/Sidebar.jsx";
 import PageNotFound from "./components/PageNotFound/PageNotFouund.jsx";
+import Loader from "./components/Loaders/Loader.jsx";
 
 // Pages
 import Home from "./pages/Home";
@@ -36,28 +34,27 @@ import LoginPage from "./pages/Login/LoginPage.jsx";
 import MyRequest from "./components/products/MyRequest.jsx";
 import MySales from "./components/products/MySales.jsx";
 import Myproducut from "./components/products/Myproducut.jsx";
-import { getAllCategory } from "./store/slices/categorySlice.js";
 import MyOrder from "./components/products/MyOrder.jsx";
 import Restaurants from "./pages/Restaurants.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition/TermsAndConditions.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
-import Loader from "./components/Loaders/Loader.jsx";
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLogin, loading } = useSelector((state) => state.auth);
+  const [initialCheckDone, setInitialCheckDone] = useState(false);
+
   const TRACKING_ID = import.meta.env.VITE_API_TRACKING_ID;
 
   useEffect(() => {
     ReactGA.initialize(TRACKING_ID);
   }, []);
+
   useEffect(() => {
     ReactGA.pageview(location.pathname + location.search);
   }, [location]);
-
-  const [initialCheckDone, setInitialCheckDone] = React.useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -73,26 +70,23 @@ function App() {
     if (isLogin) {
       if (location.pathname === "/login") {
         navigate("/");
+      } else {
+        dispatch(getAllProducts());
+        dispatch(getAllCategory());
       }
-    } else if (location.pathname !== "/login") {
-      navigate("/login");
+    } else {
+      if (location.pathname !== "/login") {
+        navigate("/login");
+      }
     }
-  }, [isLogin, location.pathname, navigate, initialCheckDone]);
+  }, [initialCheckDone, isLogin, location.pathname, navigate, dispatch]);
 
-  useEffect(() => {
-    dispatch(getAllProducts());
-    dispatch(getAllCategory());
-  });
-
-  // Check if the current route is the 404 page
   const is404Page = location.pathname === "/404";
 
-  console.log(loading);
-
-  if (loading) {
+  if (!initialCheckDone || loading) {
     return (
       <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
-        <div className=" p-8 text-center">
+        <div className="p-8 text-center">
           <Loader />
         </div>
       </div>
@@ -100,9 +94,6 @@ function App() {
   }
 
   return (
-    // <div className="flex flex-col min-h-screen">
-    //   {!is404Page && location.pathname !== '/login' && <Header />}
-    //   <div className="flex-grow">
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginPage />} />
@@ -128,9 +119,6 @@ function App() {
       <Route path="/404" element={<PageNotFound />} />
       <Route path="*" element={<Navigate to="/404" replace />} />
     </Routes>
-    //   </div>
-    //   {!is404Page && location.pathname !== '/login' && <Footer />}
-    // </div>
   );
 }
 
