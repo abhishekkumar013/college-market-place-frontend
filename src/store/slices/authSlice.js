@@ -69,7 +69,7 @@ export const checkUserAuth = () => async (dispatch) => {
       withCredentials: true,
     });
 
-    console.log("CA", data);
+    // console.log("CA", data);
 
     if (data) {
       dispatch(loginSuccess(data.data));
