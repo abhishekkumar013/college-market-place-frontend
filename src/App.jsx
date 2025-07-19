@@ -83,6 +83,8 @@ function App() {
 
   const is404Page = location.pathname === "/404";
 
+  console.log(loading);
+
   if (!initialCheckDone || loading) {
     return (
       <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
