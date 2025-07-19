@@ -63,7 +63,7 @@ function App() {
   useEffect(() => {
     // dispatch(checkLoginStatus())
     dispatch(checkUserAuth());
-  }, []);
+  }, [loading, isLogin, dispatch]);
 
   useEffect(() => {
     // Redirect based on login status
