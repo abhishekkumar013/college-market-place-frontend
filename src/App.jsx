@@ -77,7 +77,7 @@ function App() {
   const is404Page = location.pathname === "/404";
 
   console.log(loading);
-  console.llog("U", user);
+  console.log("U", user);
 
   if (loading && !user) {
     return (
