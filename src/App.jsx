@@ -41,12 +41,13 @@ import MyOrder from "./components/products/MyOrder.jsx";
 import Restaurants from "./pages/Restaurants.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition/TermsAndConditions.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
+import Loader from "./components/Loaders/Loader.jsx";
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLogin } = useSelector((state) => state.auth);
+  const { isLogin, loading } = useSelector((state) => state.auth);
   const TRACKING_ID = import.meta.env.VITE_API_TRACKING_ID;
 
   useEffect(() => {
@@ -83,6 +84,16 @@ function App() {
 
   // Check if the current route is the 404 page
   const is404Page = location.pathname === "/404";
+
+  if (loading) {
+    return (
+      <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
+        <div className=" p-8 text-center">
+          <Loader />
+        </div>
+      </div>
+    );
+  }
 
   return (
     // <div className="flex flex-col min-h-screen">

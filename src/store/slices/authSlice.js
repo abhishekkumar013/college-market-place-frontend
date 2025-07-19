@@ -4,9 +4,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const initialState = {
-  isLogin: localStorage.getItem("isLogin") === "true" || false,
+  isLogin: false,
   user: null,
   message: "",
+  loading: false,
 };
 
 const authSlice = createSlice({
@@ -16,24 +17,20 @@ const authSlice = createSlice({
     loginSuccess(state, action) {
       state.isLogin = true;
       state.user = action.payload;
-      localStorage.setItem("isLogin", "true");
-      localStorage.setItem("user", JSON.stringify(action.payload));
     },
     loginFailed(state) {
       state.isLogin = false;
       state.user = null;
-      localStorage.setItem("isLogin", "false");
-      localStorage.removeItem("user");
     },
     logoutSuccess(state) {
-      localStorage.setItem("isLogin", "false");
-      localStorage.removeItem("user");
       state.isLogin = false;
       state.user = null;
     },
     updateProfileSuccess(state, action) {
       state.user = action.payload;
-      localStorage.setItem("user", JSON.stringify(action.payload));
+    },
+    setLoading(state, action) {
+      state.loading = action.payload;
     },
   },
 });
@@ -43,52 +40,47 @@ export const {
   loginFailed,
   logoutSuccess,
   updateProfileSuccess,
+  setLoading,
 } = authSlice.actions;
 
 export default authSlice.reducer;
 
 export const checkLoginStatus = () => async (dispatch) => {
-  const user = localStorage.getItem("user");
+  dispatch(setLoading(true));
+  try {
+    const { data } = await axios.get(`${server}/user/login/success`, {
+      withCredentials: true,
+    });
 
-  if (user) {
-    dispatch(loginSuccess(JSON.parse(user)));
-  } else {
-    try {
-      // Call backend to check if the session is still valid
-      const { data } = await axios.get(`${server}/user/login/success`, {
-        withCredentials: true,
-      });
-
-      if (data && data.user) {
-        // Successfully retrieved user data, set as logged in
-        dispatch(loginSuccess(data.user));
-      }
-    } catch (error) {
-      // Failed to retrieve session, treat as not logged in
-      dispatch(loginFailed());
+    if (data && data.user) {
+      dispatch(loginSuccess(data.user));
     }
+  } catch (error) {
+    dispatch(loginFailed());
+  } finally {
+    dispatch(setLoading(false));
   }
 };
 
 export const checkUserAuth = () => async (dispatch) => {
+  dispatch(setLoading(true));
   try {
-    // Call backend to check if the session is still valid
     const { data } = await axios.get(`${server}/user/isauth`, {
       withCredentials: true,
     });
-    console.log("Userji", data.data);
 
     if (data) {
-      // Successfully retrieved user data, set as logged in
       dispatch(loginSuccess(data.data));
     }
   } catch (error) {
-    // Failed to retrieve session, treat as not logged in
     dispatch(loginFailed());
+  } finally {
+    dispatch(setLoading(false));
   }
 };
 
 export const logoutUser = () => async (dispatch) => {
+  dispatch(setLoading(true));
   try {
     await axios.get(`${server}/user/logout`, {
       withCredentials: true,
@@ -100,10 +92,13 @@ export const logoutUser = () => async (dispatch) => {
   } catch (error) {
     toast.error("Error logging out");
     dispatch(logoutSuccess());
+  } finally {
+    dispatch(setLoading(false));
   }
 };
 
 export const updateUserProfile = (userData) => async (dispatch, getState) => {
+  dispatch(setLoading(true));
   try {
     // const { token } = getState().auth
     const { data } = await axios.put(
@@ -122,5 +117,7 @@ export const updateUserProfile = (userData) => async (dispatch, getState) => {
   } catch (error) {
     const errorMessage = error.response?.data?.message || error.message;
     toast.error(errorMessage);
+  } finally {
+    dispatch(setLoading(false));
   }
 };
