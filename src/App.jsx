@@ -43,8 +43,7 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLogin, loading } = useSelector((state) => state.auth);
-  const [initialCheckDone, setInitialCheckDone] = useState(false);
+  const { isLogin, loading, user } = useSelector((state) => state.auth);
 
   const TRACKING_ID = import.meta.env.VITE_API_TRACKING_ID;
 
@@ -57,16 +56,10 @@ function App() {
   }, [location]);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      await dispatch(checkUserAuth());
-      setInitialCheckDone(true);
-    };
-    checkAuth();
+    dispatch(checkUserAuth());
   }, [dispatch]);
 
   useEffect(() => {
-    if (!initialCheckDone) return;
-
     if (isLogin) {
       if (location.pathname === "/login") {
         navigate("/");
@@ -79,13 +72,14 @@ function App() {
         navigate("/login");
       }
     }
-  }, [initialCheckDone, isLogin, location.pathname, navigate, dispatch]);
+  }, [isLogin, location.pathname, navigate, dispatch]);
 
   const is404Page = location.pathname === "/404";
 
   console.log(loading);
+  console.llog("U", user);
 
-  if (!initialCheckDone || loading) {
+  if (loading && !user) {
     return (
       <div className="mt-5 md:h-screen md:flex md:justify-center items-center md:-mt-20">
         <div className="p-8 text-center">
